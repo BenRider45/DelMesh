@@ -13,7 +13,6 @@
 #include "Point2D.hpp"
 #include "BWMesh.hpp"
 
-
 int main(int argc, const char * argv[]) {
 
 
@@ -26,10 +25,16 @@ int main(int argc, const char * argv[]) {
    // std::string fPath =  + "/Delauney Mesh\s Generation/External";
     std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),10,100,"../PointFiles/TestPointFil2e.txt");
     
+        
+    Point2D A = Point2D(5.0,5.0);
+    Point2D B = Point2D(2.5,20.5);
+    Point2D C = Point2D(6.4, 6.3);
     
-    
-    
-    //std::cout<< pointFPath<<"\n";
+    Triangle tri = Triangle(A,B,C);
+    std::cout<<"Do I get to 34?\n";
+    Circle circ = tri.computeCircumcircle();
+    std::cout<<"Circle Center: "<<circ.radius<<"\n";
+    std::cout<< pointFPath<<"\n";
     Mesh.pointList = Mesh.readPointListFromFile("../PointFiles/TestPointFile.txt");
     
     

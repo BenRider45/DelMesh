@@ -39,24 +39,29 @@ Circle Triangle::computeCircumcircle(){
     }
     
     float denom = B_perpM - A_perpM;
-    float X_Num = (B_perpM*B.mdpt.V(0)) - (A_perpM*A.mdpt.V(0)) + (A.mdpt.V(1) - B.mdpt.V(1));
-    float Y_Num = (pow(B_perpM,2)*B.mdpt.V(0)) - (A_perpM*B_perpM*A.mdpt.V(0)) + B_perpM*(A.mdpt.V(1) - B.mdpt.V(1));
-    float Y_Res = -B_perpM*B.mdpt.V(0) + B.mdpt.V(1);
-    
-     
+    float X_Num = (B_perpM*B.midPt.V(0)) - (A_perpM*A.midPt.V(0)) + (A.midPt.V(1) - B.midPt.V(1));
+    float Y_Num = (pow(B_perpM,2)*B.midPt.V(0)) - (A_perpM*B_perpM*A.midPt.V(0)) + B_perpM*(A.midPt.V(1) - B.midPt.V(1));
+    float Y_Res = -B_perpM*B.midPt.V(0) + B.midPt.V(1);
+        
+    float CircCenter_X = X_Num / denom;
+    float CircCenter_Y = (Y_Num /denom) + Y_Res;
+    Point2D CirclePoint = Point2D(CircCenter_X,CircCenter_Y);
+    float CircleRadius = sqrt( pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2) );
+    Circle output = Circle(CirclePoint,CircleRadius);
+
     //Compute Inverse of slopes (check for inf slope case)
     //use ComputeMdpt function to get midpoints
     //compute circle X and Y
     //compute radius (distance between center and any vertex)
-`   //Create Circle Object
-    return Circle();
+    //Create Circle Object
+    return output;
     
 }
 
 
-bool Triangle::isPointInCircumcircle(){
+bool Triangle::checkIncircle(Point2D d){
      
     // Compute determinate here, build matrix with eigen like github example
-
+    return true;
 
 }
