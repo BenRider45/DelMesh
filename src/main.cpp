@@ -31,6 +31,10 @@ int main(int argc, const char * argv[]) {
     Point2D C = Point2D(6.4, 6.3);
     
     Triangle tri = Triangle(A,B,C);
+    std::cout<< tri.Edges[0]; 
+    std::cout<< tri.Edges[1];
+    std::cout<< tri.Edges[2];
+   
     std::cout<<"Do I get to 34?\n";
     Circle circ = tri.computeCircumcircle();
     std::cout<<"Circle Center: "<<circ.radius<<"\n";
@@ -45,5 +49,4 @@ int main(int argc, const char * argv[]) {
 //    std::cout<<"Hello World!";
     return 0;
 }                            
-
 
