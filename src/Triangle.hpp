@@ -18,28 +18,37 @@
 
 
 class Triangle{
-private:
+public:
     double calcIncircleDet(Point2D d);
     double calcOrientDet();
     Point2D a;
     Point2D b;
     Point2D c;
-    std::array<Edge,3> Edges; //Edge Order: AB, BC, AC
+    Edge AB;
+    Edge BC;
+    Edge AC;
+    std::vector<Edge> Edges;
     Circle circle;
     float area;
     float perim;
-public:
+
 
     Triangle() {};
     Triangle(Point2D a, Point2D b, Point2D c) : a(a),b(b),c(c) {
+        std::cout<<"Triangle Constructor"<< a;
         area = computeArea();//Computing Area via shoelace
-        Edges[0] = Edge(a,b);
-        Edges[1] = Edge(b,c);
-        Edges[2] = Edge(a,c);
+        
+        AB = Edge(a,b);
+        std::cout<<AB<<"\n";
+        Edges.push_back(AB);
+        BC = Edge(b,c);
+        Edges.push_back(BC);
+        AC = Edge(a,c);
+        Edges.push_back(AC);
+
     };
     float computeArea() { return .5 *((b.V(0) - a.V(0))*(c.V(1)-a.V(1)))- ((c.V(0) - a.V(0)) * (b.V(1)-a.V(1))); };
     
-    std::vector<Point2D> verticies; //Will almost always have len of 3
     void checkOrient(); //Returns true if orientation is CC initially, 0 if orientation required modification to be CC
     bool checkIncircle(Point2D d);//
     Circle computeCircumcircle();

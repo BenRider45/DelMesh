@@ -41,5 +41,6 @@ public:
     
     friend std::ostream& operator <<(std::ostream& os, const Edge& edg){
         os << "Edge: " << edg.a << "->" << edg.b <<"\n";
+        return os;
     }    
 };

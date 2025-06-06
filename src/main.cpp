@@ -29,15 +29,19 @@ int main(int argc, const char * argv[]) {
     Point2D A = Point2D(5.0,5.0);
     Point2D B = Point2D(2.5,20.5);
     Point2D C = Point2D(6.4, 6.3);
-    
+    std::cout << A<<"\n";
+    std::cout << B<<"\n";
+
+    Edge AB = Edge(A,B);
+    std::cout << AB<<"\n";
     Triangle tri = Triangle(A,B,C);
-    std::cout<< tri.Edges[0]; 
-    std::cout<< tri.Edges[1];
-    std::cout<< tri.Edges[2];
+    std::cout<< tri.AB<<"\n"; 
+    std::cout<< tri.BC<<"\n";
+    std::cout<< tri.AC<<"\n";
    
     std::cout<<"Do I get to 34?\n";
     Circle circ = tri.computeCircumcircle();
-    std::cout<<"Circle Center: "<<circ.radius<<"\n";
+    std::cout<<"Circle Center: "<<circ.center<<"Circle Radius: "<<circ.radius<<"\n";
     std::cout<< pointFPath<<"\n";
     Mesh.pointList = Mesh.readPointListFromFile("../PointFiles/TestPointFile.txt");
     
@@ -46,7 +50,6 @@ int main(int argc, const char * argv[]) {
         std::cout << p <<"\n" ;
         
     }
-//    std::cout<<"Hello World!";
     return 0;
 }                            
 

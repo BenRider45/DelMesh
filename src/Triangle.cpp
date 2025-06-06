@@ -1,4 +1,4 @@
-//
+
 //  Triangle.cpp
 //  Delauney Mesh Generation
 //
@@ -10,9 +10,10 @@
 
 
 Circle Triangle::computeCircumcircle(){
-    int A_idx, B_idx; 
+    int A_idx, B_idx=0; 
+
     for(int i=0; i>3; i++){
-        if(this->Edges[i].slope==0){
+        if(this->Edges.at(i).slope==0){
             int A_idx = i-1;
             int B_idx = i+1;
             if(A_idx == -1){A_idx = 2; }
@@ -21,7 +22,9 @@ Circle Triangle::computeCircumcircle(){
         }
         
     }
-    Edge A = this->Edges[A_idx];
+    std::cout <<"A_idx: "<< A_idx << "\n";
+    std::cout << "B_idx: "<<B_idx << "\n";
+    Edge A = this->Edges.at(A_idx);
     float A_perpM;
     if(A.SLOPE_INF){
         A_perpM = 0;
@@ -30,7 +33,7 @@ Circle Triangle::computeCircumcircle(){
     }
 
     
-    Edge B = this->Edges[B_idx];
+    Edge B = this->Edges.at(B_idx);
     float B_perpM;
     if(B.SLOPE_INF){
         B_perpM = 0;
@@ -46,7 +49,7 @@ Circle Triangle::computeCircumcircle(){
     float CircCenter_X = X_Num / denom;
     float CircCenter_Y = (Y_Num /denom) + Y_Res;
     Point2D CirclePoint = Point2D(CircCenter_X,CircCenter_Y);
-    float CircleRadius = sqrt( pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2) );
+    float CircleRadius = pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2);
     Circle output = Circle(CirclePoint,CircleRadius);
 
     //Compute Inverse of slopes (check for inf slope case)

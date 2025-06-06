@@ -11,7 +11,7 @@
     
     
 std::ostream& operator <<(std::ostream& os, const Point2D& pt){
-    os << "["<<pt.V(0)<<","<<pt.V(1)<<"]\n";
+    os << "["<<pt.V(0)<<","<<pt.V(1)<<"]";
     return os;
 }
 
