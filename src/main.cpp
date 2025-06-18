@@ -19,37 +19,24 @@ int main(int argc, const char * argv[]) {
     Point2D testPoint = Point2D(3.4214,2.6667543);
     
     BWMesh Mesh = BWMesh();
-    std::cout << "Hello World\n";    
-    Point2D MAX_XY = Point2D(10.0, 10.0);
-    Point2D MIN_XY = Point2D(-10.0,-10.0);
+    Point2D MAX_XY = Point2D(1, 1);
+    Point2D MIN_XY = Point2D(-1,-1);
    // std::string fPath =  + "/Delauney Mesh\s Generation/External";
-    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),10,100,"../PointFiles/TestPointFil2e.txt");
+    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),4,100,"../PointFiles/TestPointFil3e.txt");
     
-        
-    Point2D A = Point2D(5.0,5.0);
-    Point2D B = Point2D(2.5,20.5);
-    Point2D C = Point2D(6.4, 6.3);
-    std::cout << A<<"\n";
-    std::cout << B<<"\n";
+    Mesh.pointList = Mesh.readPointListFromFile(pointFPath);
 
-    Edge AB = Edge(A,B);
-    std::cout << AB<<"\n";
-    Triangle tri = Triangle(A,B,C);
-    std::cout<< tri.AB<<"\n"; 
-    std::cout<< tri.BC<<"\n";
-    std::cout<< tri.AC<<"\n";
-   
-    std::cout<<"Do I get to 34?\n";
-    Circle circ = tri.computeCircumcircle();
-    std::cout<<"Circle Center: "<<circ.center<<"Circle Radius: "<<circ.radius<<"\n";
-    std::cout<< pointFPath<<"\n";
-    Mesh.pointList = Mesh.readPointListFromFile("../PointFiles/TestPointFile.txt");
-    
-    
-    for (Point2D p : Mesh.pointList){
-        std::cout << p <<"\n" ;
-        
+    for(int i=0; i<Mesh.pointList.size(); i++){
+        std::cout<<Mesh.pointList[i]<<"\n";
+
     }
+
+    
+    Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
+    
+    std::cout<< supTriang;
+
+
     return 0;
 }                            
 

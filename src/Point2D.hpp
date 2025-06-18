@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "Eigen/Dense"
-
+#include <cmath>
 
 class Point2D {
      
@@ -44,7 +44,8 @@ public:
     
     bool operator==(const Point2D& other) const {return this->V == other.V;}
     
-    
+    float dist(Point2D other);
+
 };
 
 #endif /* Point2D_hpp */

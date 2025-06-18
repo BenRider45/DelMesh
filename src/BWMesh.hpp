@@ -38,12 +38,13 @@ public:
     
     Point2D getMeanPt();
 
+    
 
     void findMaxMin();
     //Finding the Min and Max X Y values for the given pointList
     
     Triangle getSuperTriang(Point2D MAX_XY, Point2D MIN_XY);
-    
+
     
 };
 

@@ -22,8 +22,8 @@ Circle Triangle::computeCircumcircle(){
         }
         
     }
-    std::cout <<"A_idx: "<< A_idx << "\n";
-    std::cout << "B_idx: "<<B_idx << "\n";
+    //std::cout <<"A_idx: "<< A_idx << "\n";
+    //std::cout << "B_idx: "<<B_idx << "\n";
     Edge A = this->Edges.at(A_idx);
     float A_perpM;
     if(A.SLOPE_INF){
@@ -49,8 +49,12 @@ Circle Triangle::computeCircumcircle(){
     float CircCenter_X = X_Num / denom;
     float CircCenter_Y = (Y_Num /denom) + Y_Res;
     Point2D CirclePoint = Point2D(CircCenter_X,CircCenter_Y);
-    float CircleRadius = pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2);
+    float CircleRadius = sqrt(pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2));
     Circle output = Circle(CirclePoint,CircleRadius);
+
+    if(CircleRadius == NULL){
+        std::cout<<"Circle Radius Null: " << CircleRadius<<"\n"; 
+    }
 
     //Compute Inverse of slopes (check for inf slope case)
     //use ComputeMdpt function to get midpoints

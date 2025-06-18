@@ -27,7 +27,7 @@ public:
     Edge(Point2D a, Point2D b): a(a),b(b) {
         
         this->midPt = computeMidpoint();
-        if(b.V(0) == a.V(0)){SLOPE_INF = false;}
+        this->SLOPE_INF = b.V(0) == a.V(0) ?  true : false;
         this->slope = (a.V(1)-b.V(1))/(a.V(0)-b.V(0));
         
         this->magnitude = sqrt(pow((a.V(1)-b.V(1)),2)+ pow((a.V(0)-b.V(0)),2));

@@ -14,10 +14,25 @@ public:
     
     Point2D center;
     float radius;
-    
+    struct Box{
+        Point2D XY_MAX;
+        Point2D XY_MIN;
+
+    } Box;
     Circle() { };
 
-    Circle(Point2D init_center, float init_radius) : center(init_center), radius(init_radius) {};
+    Circle(Point2D init_center, float init_radius) : center(init_center), radius(init_radius) {
+        Box.XY_MAX.V(0) = init_center.V(0) + init_radius;
+        Box.XY_MIN.V(0) = init_center.V(0) - init_radius;
 
+        Box.XY_MAX.V(1) = init_center.V(1) + init_radius;
+        Box.XY_MIN.V(1) = init_center.V(1) - init_radius;
+
+    };
+
+    friend std::ostream& operator <<(std::ostream& os, const Circle& circ){
+        os << "Circle: \n" << "Radius: " << circ.radius << " Center: " << circ.center;
+        return os;
+    }
 
 };
