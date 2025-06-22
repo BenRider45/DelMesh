@@ -52,8 +52,8 @@ public:
         // Edges.push_back(BC);
         // CA = Edge(c,a);
         // Edges.push_back(CA);
-        this->circle = this->computeCircumcircle();
-        std::cout<<"Triangle Constructor circle: "<<this->circle<<'\n';
+        this->circle = computeCircumcircle();
+       // std::cout<<"Triangle Constructor circle: "<<this->circle<<'\n';
     };
     float computeArea() { return .5 *((b.V(0) - a.V(0))*(c.V(1)-a.V(1)))- ((c.V(0) - a.V(0)) * (b.V(1)-a.V(1))); };
     

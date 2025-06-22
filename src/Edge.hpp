@@ -28,8 +28,10 @@ public:
         
         this->midPt = computeMidpoint();
         this->SLOPE_INF = b.V(0) == a.V(0) ?  true : false;
-        this->slope = (a.V(1)-b.V(1))/(a.V(0)-b.V(0));
-        
+        //std::cout<<"This->SLOPE_INF: "<< this->SLOPE_INF<<"\n"; 
+        if (!SLOPE_INF){
+            this->slope = (a.V(1)-b.V(1))/(a.V(0)-b.V(0));
+        }
         this->magnitude = sqrt(pow((a.V(1)-b.V(1)),2)+ pow((a.V(0)-b.V(0)),2));
         
     };

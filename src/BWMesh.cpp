@@ -183,11 +183,12 @@ Triangle BWMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
 
 
     }
+    std::cout<<maxCircX<<","<<maxCircY<<"||"<<minCircX<<","<<minCircY<<"\n";
 
-    std::cout<<"maxCircX: "<<maxCircX<<"\n";
-    std::cout<<"maxCircY: "<<maxCircY<<"\n";
-    std::cout<<"minCircX: "<<minCircX<<"\n";
-    std::cout<<"minCircY: "<<minCircY<<"\n";
+    // std::cout<<"maxCircX: "<<maxCircX<<"\n";
+    // std::cout<<"maxCircY: "<<maxCircY<<"\n";
+    // std::cout<<"minCircX: "<<minCircX<<"\n";
+    // std::cout<<"minCircY: "<<minCircY<<"\n";
     float C_supX = (maxCircX + minCircX) /2;
     float C_supY = (maxCircY + minCircY) /2;
 
@@ -205,9 +206,9 @@ Triangle BWMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     float B_x = C_supX + (3.0/2.0)*r_scc*tan(M_PI/6);
     float C_x = C_supX - (3.0/2.0)*r_scc*tan(M_PI/6);
 
-    std::cout<<"B_X: "<<B_x<<"\n";
-    std::cout<<"C_X: "<<C_x<<"\n";
-    std::cout<<"Tan: "<<tan(M_PI/6);
+    // std::cout<<"B_X: "<<B_x<<"\n";
+    // std::cout<<"C_X: "<<C_x<<"\n";
+    // std::cout<<"Tan: "<<tan(M_PI/6);
     Point2D A = Point2D(C_supX, A_y);
 
     Point2D B = Point2D(B_x, BC_y);

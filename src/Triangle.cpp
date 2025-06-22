@@ -12,18 +12,21 @@
 Circle Triangle::computeCircumcircle(){
     int A_idx, B_idx=0; 
 
-    for(int i=0; i>3; i++){
-        if(this->Edges.at(i).slope==0){
-            int A_idx = i-1;
-            int B_idx = i+1;
+    for(int i=0; i<3; i++){
+        if(this->Edges.at(i).slope==0.0){
+            A_idx = i-1;
+            B_idx = i+1;
             if(A_idx == -1){A_idx = 2; }
             if(B_idx == 3) { B_idx = 0;}
+            break;
             //There can only be at most one edge with a slope of 0
         }
         
     }
-    //std::cout <<"A_idx: "<< A_idx << "\n";
-    //std::cout << "B_idx: "<<B_idx << "\n";
+   // std::cout <<"A_idx: "<< A_idx << "\n";
+   // std::cout << "B_idx: "<<B_idx << "\n";
+
+
     Edge A = this->Edges.at(A_idx);
     float A_perpM;
     if(A.SLOPE_INF){
