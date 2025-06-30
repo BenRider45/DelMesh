@@ -221,5 +221,47 @@ Triangle BWMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
 }
 
 
+std::vector<Triangle> BWMesh::BowyerWatson(std::vector<Point2D> pointList, Triangle SuperTriag){  
+    std::vector<Triangle> Triangulation = {SuperTriag}; 
+    for(int i=0; i<pointList.size(); i++){
+        //Hash Map for coordinate lookup potentially (radially based using eucidian distance from origin?)
+        std::vector<Triangle> badTriangleList = {};
+        std::vector<Edge> polygonEdgeList = {};
+        for(int j=0;i<Triangulation.size();j++){
+            if(Triangulation[j].checkIncircle(pointList[i])){
+                //Remove from triangulationd
+                //Store edges of triangle
+                
+                badTriangleList.emplace_back(Triangulation[j]);
+                //Remove Bad Triangle From List
+            }
 
 
+        } 
+        
+        //Getting Convex hull of new whole in mesh
+        for(int j=0; j<badTriangleList.size();j++){
+            for(int k=0; k<3; k++){
+
+                for(int h=0; h<polygonEdgeList.size(); h++){
+                    if(badTriangleList[j].Edges[k]== polygonEdgeList[h]){
+                        break;
+                    }
+                    polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);                
+                
+                }
+                polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);
+                
+            }
+
+        }
+
+        for(int j=0; j<polygonEdgeList.size();j++){
+            //Make new triangle add to Triangulation
+        }
+
+
+
+
+    }
+}

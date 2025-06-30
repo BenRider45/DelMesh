@@ -11,6 +11,10 @@
 
 Circle Triangle::computeCircumcircle(){
     int A_idx, B_idx=0; 
+    //In the case that one of the edges, of our triangle has a slope of 0, 
+    //its perpendicular bisector will have an infinite slope, making is
+    //incompatible with our current method of calculating the center of our circle
+    //This loop ensures we will never choose a side with a slope of 0.
 
     for(int i=0; i<3; i++){
         if(this->Edges.at(i).slope==0.0){
@@ -23,8 +27,7 @@ Circle Triangle::computeCircumcircle(){
         }
         
     }
-   // std::cout <<"A_idx: "<< A_idx << "\n";
-   // std::cout << "B_idx: "<<B_idx << "\n";
+
 
 
     Edge A = this->Edges.at(A_idx);
@@ -59,11 +62,6 @@ Circle Triangle::computeCircumcircle(){
         std::cout<<"Circle Radius Null: " << CircleRadius<<"\n"; 
     }
 
-    //Compute Inverse of slopes (check for inf slope case)
-    //use ComputeMdpt function to get midpoints
-    //compute circle X and Y
-    //compute radius (distance between center and any vertex)
-    //Create Circle Object
     return output;
     
 }
@@ -72,6 +70,8 @@ Circle Triangle::computeCircumcircle(){
 bool Triangle::checkIncircle(Point2D d){
      
     // Compute determinate here, build matrix with eigen like github example
+
+
     return true;
 
 }

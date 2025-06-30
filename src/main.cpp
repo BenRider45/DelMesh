@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
    //TESTING SEED
    //std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),4,100,"../PointFiles/TestPointFil3e.txt");
 
-    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),100,100,"../PointFiles/TestPointFil3e.txt");
+    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),200,100,"../PointFiles/TestPointFil3e.txt");
     
     Mesh.pointList = Mesh.readPointListFromFile(pointFPath);
 
