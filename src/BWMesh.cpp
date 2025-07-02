@@ -12,6 +12,7 @@
 #include <iostream>
 #include <filesystem>
 #include <string>
+#include "Eigen/Dense"
 BWMesh::BWMesh(){
     this->connecArray = std::vector<Triangle>();
     this->pointList = std::vector<Point2D>();
@@ -231,37 +232,40 @@ std::vector<Triangle> BWMesh::BowyerWatson(std::vector<Point2D> pointList, Trian
             if(Triangulation[j].checkIncircle(pointList[i])){
                 //Remove from triangulationd
                 //Store edges of triangle
-                
                 badTriangleList.emplace_back(Triangulation[j]);
                 //Remove Bad Triangle From List
             }
 
-
+            std::cout<<"Got to Triangulation loop\n";
         } 
         
-        //Getting Convex hull of new whole in mesh
+        //Getting Convex hull of new hole in mesh
         for(int j=0; j<badTriangleList.size();j++){
+            std::cout<<"Got to badTriangleList loop\n";
             for(int k=0; k<3; k++){
-
+                std::cout<<"Got to Triangle Edge Loop\n";
                 for(int h=0; h<polygonEdgeList.size(); h++){
                     if(badTriangleList[j].Edges[k]== polygonEdgeList[h]){
                         break;
                     }
+                    std::cout<<"Polygon edge List loop\n";
                     polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);                
                 
                 }
                 polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);
                 
             }
-
+            
         }
 
         for(int j=0; j<polygonEdgeList.size();j++){
-            //Make new triangle add to Triangulation
+            Triangle T = Triangle(pointList[i],polygonEdgeList[j].a,polygonEdgeList[j].b);
+            Triangulation.emplace_back();
         }
 
 
 
 
     }
+
 }

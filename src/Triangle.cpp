@@ -15,7 +15,7 @@ Circle Triangle::computeCircumcircle(){
     //its perpendicular bisector will have an infinite slope, making is
     //incompatible with our current method of calculating the center of our circle
     //This loop ensures we will never choose a side with a slope of 0.
-
+    
     for(int i=0; i<3; i++){
         if(this->Edges.at(i).slope==0.0){
             A_idx = i-1;
@@ -70,8 +70,13 @@ Circle Triangle::computeCircumcircle(){
 bool Triangle::checkIncircle(Point2D d){
      
     // Compute determinate here, build matrix with eigen like github example
+    Eigen::Matrix4f mat;
+    mat << a.V(0), a.V(1), a.mag, 1,
+           b.V(0), b.V(1), b.mag, 1,
+           c.V(0), c.V(1), c.mag, 1,
+           d.V(0), d.V(1), d.mag, 1;
+    
 
-
-    return true;
+    return mat.determinant()<0; 
 
 }

@@ -34,11 +34,27 @@ int main(int argc, const char * argv[]) {
         std::cout<<Mesh.pointList[i]<<"\n";
 
     }
+    Point2D a = Point2D(-10,0);
+    Point2D b = Point2D(10,0);
+    Point2D c = Point2D(0,20);
 
-    
+    Triangle t = Triangle(a,b,c);
+
+    Point2D inTriangle = Point2D(0,5);
+
+    std::cout<<"inTriangle checkIncircle:"<<t.checkIncircle(inTriangle);
+
+    Point2D outTriangle = Point2D(0,30);
+
+    std::cout<<"outTriangle checkIncircle:"<<t.checkIncircle(outTriangle);
+
     Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
     
-    std::cout<< supTriang;
+    std::vector<Triangle> m = Mesh.BowyerWatson(Mesh.pointList,supTriang);
+
+    
+
+    //std::cout<< supTriang;
 
 
     return 0;
