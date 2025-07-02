@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
    //TESTING SEED
    //std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),4,100,"../PointFiles/TestPointFil3e.txt");
 
-    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),200,100,"../PointFiles/TestPointFil3e.txt");
+    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),10,10,"../PointFiles/TestPointFil4e.txt");
     
     Mesh.pointList = Mesh.readPointListFromFile(pointFPath);
 
@@ -49,12 +49,12 @@ int main(int argc, const char * argv[]) {
     std::cout<<"outTriangle checkIncircle:"<<t.checkIncircle(outTriangle);
 
     Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
-    
+    std::cout<< supTriang;
+
     std::vector<Triangle> m = Mesh.BowyerWatson(Mesh.pointList,supTriang);
 
     
 
-    //std::cout<< supTriang;
 
 
     return 0;

@@ -238,7 +238,7 @@ std::vector<Triangle> BWMesh::BowyerWatson(std::vector<Point2D> pointList, Trian
 
             std::cout<<"Got to Triangulation loop\n";
         } 
-        
+        std::cout<<"got out of Triangulation loop\n";
         //Getting Convex hull of new hole in mesh
         for(int j=0; j<badTriangleList.size();j++){
             std::cout<<"Got to badTriangleList loop\n";
