@@ -77,6 +77,29 @@ bool Triangle::checkIncircle(Point2D d){
            d.V(0), d.V(1), d.mag, 1;
     
 
-    return mat.determinant()<0; 
+    return mat.determinant()>0; 
+
+}
+
+int Triangle::checkOrient(){
+    //Computing the determinate of 3x3 matrix:
+    // |a_x b_x c_x|
+    // |a_y b_y c_y|
+    // |1   1   1  |
+
+    float det = b.V(0)*(c.V(1)-a.V(1)) + a.V(0)*(b.V(1)-c.V(1)) + c.V(0)*(a.V(1)- b.V(1));
+    if (det==0){return 0;}
+    
+    return det==0 ? 0 : (det>0 ? 1 : -1);
+}
+
+int Triangle::correctOrient(){
+    if(checkOrient() <0){
+        Point2D temp = b;
+        b = c;
+        c = b;
+        return -1;
+    }
+    return 1;
 
 }

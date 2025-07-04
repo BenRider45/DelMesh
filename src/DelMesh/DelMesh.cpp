@@ -1,11 +1,11 @@
 //
-//  BWMesh.cpp
+//  DelMesh.cpp
 //  Delauney Mesh Generation
 //
 //  Created by Ben Rider on 1/15/25.
 //
 
-#include "BWMesh.hpp"
+#include "DelMesh.hpp"
 #include <fstream>
 #include "Point2D.hpp"
 #include <random>
@@ -13,13 +13,13 @@
 #include <filesystem>
 #include <string>
 #include "Eigen/Dense"
-BWMesh::BWMesh(){
+DelMesh::DelMesh(){
     this->connecArray = std::vector<Triangle>();
     this->pointList = std::vector<Point2D>();
     
 }
 
-std::string BWMesh::generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName){
+std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName){
     
     
     std::fstream outFile;
@@ -67,7 +67,7 @@ std::string BWMesh::generateRandPtLst(double minX, double maxX, double minY, dou
     return fileName;
 }
 
-std::vector<Point2D> BWMesh::readPointListFromFile(std::string filePath){
+std::vector<Point2D> DelMesh::readPointListFromFile(std::string filePath){
     
     std::vector<Point2D> Output;
     std::fstream inFile(filePath);
@@ -100,7 +100,7 @@ std::vector<Point2D> BWMesh::readPointListFromFile(std::string filePath){
     
 }
 
-void BWMesh::findMaxMin(){
+void DelMesh::findMaxMin(){
     if(this->pointList.size()==0){
         return;
     }
@@ -138,7 +138,7 @@ void BWMesh::findMaxMin(){
     
 }
 
-Point2D BWMesh::getMeanPt(){
+Point2D DelMesh::getMeanPt(){
     double xMean = 0;
     double yMean = 0;
     for(int i=0;i<this->pointList.size();i++){
@@ -154,7 +154,7 @@ Point2D BWMesh::getMeanPt(){
 }
 
 
-Triangle BWMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
+Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     if(this->pointList.size()==0){
         return Triangle(Point2D(0, 0),Point2D(0, 0),Point2D(0, 0));
     }
@@ -222,7 +222,7 @@ Triangle BWMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
 }
 
 
-std::vector<Triangle> BWMesh::BowyerWatson(std::vector<Point2D> pointList, Triangle SuperTriag){  
+std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Triangle SuperTriag){  
     std::vector<Triangle> Triangulation = {SuperTriag}; 
     for(int i=0; i<pointList.size(); i++){
         //Hash Map for coordinate lookup potentially (radially based using eucidian distance from origin?)

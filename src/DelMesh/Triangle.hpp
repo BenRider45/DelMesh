@@ -52,12 +52,18 @@ public:
         // Edges.push_back(BC);
         // CA = Edge(c,a);
         // Edges.push_back(CA);
+        if(correctOrient() == -1){
+            std::cout<<"Points given in clockwise order\n";
+        }
+        
         this->circle = computeCircumcircle();
+
        // std::cout<<"Triangle Constructor circle: "<<this->circle<<'\n';
     };
     float computeArea() { return .5 *((b.V(0) - a.V(0))*(c.V(1)-a.V(1)))- ((c.V(0) - a.V(0)) * (b.V(1)-a.V(1))); };
     
-    void checkOrient(); //Returns true if orientation is CC initially, 0 if orientation required modification to be CC
+    int checkOrient(); //returns 1 if oriented correctly, returns -1 if not oriented correctly, and 0 if points are colinear
+    int correctOrient(); // returns 1 if points did not need correction, -1 if points were corrected
     bool checkIncircle(Point2D d);//
     Circle computeCircumcircle();
     

@@ -11,14 +11,14 @@
 // Write incircle
 #include <iostream>
 #include "Point2D.hpp"
-#include "BWMesh.hpp"
+#include "DelMesh.hpp"
 
 int main(int argc, const char * argv[]) {
 
 
     Point2D testPoint = Point2D(3.4214,2.6667543);
     
-    BWMesh Mesh = BWMesh();
+    DelMesh Mesh = DelMesh();
     Point2D MAX_XY = Point2D(10, 10);
     Point2D MIN_XY = Point2D(-10,-10);
    // std::string fPath =  + "/Delauney Mesh\s Generation/External";
