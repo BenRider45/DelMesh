@@ -10,8 +10,8 @@
 // Write orientation check
 // Write incircle
 #include <iostream>
-#include "Point2D.hpp"
-#include "DelMesh.hpp"
+#include "DelMesh/Point2D.hpp"
+#include "DelMesh/DelMesh.hpp"
 
 int main(int argc, const char * argv[]) {
 
@@ -42,11 +42,11 @@ int main(int argc, const char * argv[]) {
 
     Point2D inTriangle = Point2D(0,5);
 
-    std::cout<<"inTriangle checkIncircle:"<<t.checkIncircle(inTriangle);
+    std::cout<<"inTriangle checkIncircle:"<<t.checkIncircle(inTriangle)<<"\n";
 
     Point2D outTriangle = Point2D(0,30);
 
-    std::cout<<"outTriangle checkIncircle:"<<t.checkIncircle(outTriangle);
+    std::cout<<"outTriangle checkIncircle:"<<t.checkIncircle(outTriangle)<<"\n";
 
     Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
     std::cout<< supTriang;

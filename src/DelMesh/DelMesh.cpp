@@ -1,5 +1,5 @@
 //
-//  DelMesh.cpp
+//  Delmesh.cpp
 //  Delauney Mesh Generation
 //
 //  Created by Ben Rider on 1/15/25.

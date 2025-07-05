@@ -5,8 +5,8 @@
 //  Created by Ben Rider on 1/15/25.
 //
 
-#ifndef BWMesh_hpp
-#define BWMesh_hpp
+#ifndef DelMesh_hpp
+#define DelMesh_hpp
 
 #include <stdio.h>
 #include <vector>
@@ -50,4 +50,4 @@ public:
 
 
 
-#endif /* BWMesh_hpp */
+#endif /* DelMesh_hpp */
