@@ -63,52 +63,341 @@ CMAKE_BINARY_DIR = /Users/benrider/Documents/Development/DelMesh/Build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Delmesh.dir/all
+all: CMakeFiles/DelMesh.dir/all
+all: CMakeFiles/DelMeshDemo.dir/all
+all: tests/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/Delmesh.dir/codegen
+codegen: CMakeFiles/DelMesh.dir/codegen
+codegen: CMakeFiles/DelMeshDemo.dir/codegen
+codegen: tests/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: tests/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Delmesh.dir/clean
+clean: CMakeFiles/DelMesh.dir/clean
+clean: CMakeFiles/DelMeshDemo.dir/clean
+clean: tests/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Delmesh.dir
+# Directory level rules for directory _deps/googletest-build
+
+# Recursive "all" directory target.
+_deps/googletest-build/all: _deps/googletest-build/googlemock/all
+.PHONY : _deps/googletest-build/all
+
+# Recursive "codegen" directory target.
+_deps/googletest-build/codegen: _deps/googletest-build/googlemock/codegen
+.PHONY : _deps/googletest-build/codegen
+
+# Recursive "preinstall" directory target.
+_deps/googletest-build/preinstall: _deps/googletest-build/googlemock/preinstall
+.PHONY : _deps/googletest-build/preinstall
+
+# Recursive "clean" directory target.
+_deps/googletest-build/clean: _deps/googletest-build/googlemock/clean
+.PHONY : _deps/googletest-build/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/googletest-build/googlemock
+
+# Recursive "all" directory target.
+_deps/googletest-build/googlemock/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+_deps/googletest-build/googlemock/all: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
+_deps/googletest-build/googlemock/all: _deps/googletest-build/googletest/all
+.PHONY : _deps/googletest-build/googlemock/all
+
+# Recursive "codegen" directory target.
+_deps/googletest-build/googlemock/codegen: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen
+_deps/googletest-build/googlemock/codegen: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen
+_deps/googletest-build/googlemock/codegen: _deps/googletest-build/googletest/codegen
+.PHONY : _deps/googletest-build/googlemock/codegen
+
+# Recursive "preinstall" directory target.
+_deps/googletest-build/googlemock/preinstall: _deps/googletest-build/googletest/preinstall
+.PHONY : _deps/googletest-build/googlemock/preinstall
+
+# Recursive "clean" directory target.
+_deps/googletest-build/googlemock/clean: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean
+_deps/googletest-build/googlemock/clean: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean
+_deps/googletest-build/googlemock/clean: _deps/googletest-build/googletest/clean
+.PHONY : _deps/googletest-build/googlemock/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/googletest-build/googletest
+
+# Recursive "all" directory target.
+_deps/googletest-build/googletest/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+_deps/googletest-build/googletest/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
+.PHONY : _deps/googletest-build/googletest/all
+
+# Recursive "codegen" directory target.
+_deps/googletest-build/googletest/codegen: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen
+_deps/googletest-build/googletest/codegen: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen
+.PHONY : _deps/googletest-build/googletest/codegen
+
+# Recursive "preinstall" directory target.
+_deps/googletest-build/googletest/preinstall:
+.PHONY : _deps/googletest-build/googletest/preinstall
+
+# Recursive "clean" directory target.
+_deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean
+_deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
+.PHONY : _deps/googletest-build/googletest/clean
+
+#=============================================================================
+# Directory level rules for directory tests
+
+# Recursive "all" directory target.
+tests/all: tests/CMakeFiles/unit_tests.dir/all
+tests/all: _deps/googletest-build/all
+.PHONY : tests/all
+
+# Recursive "codegen" directory target.
+tests/codegen: tests/CMakeFiles/unit_tests.dir/codegen
+tests/codegen: _deps/googletest-build/codegen
+.PHONY : tests/codegen
+
+# Recursive "preinstall" directory target.
+tests/preinstall: _deps/googletest-build/preinstall
+.PHONY : tests/preinstall
+
+# Recursive "clean" directory target.
+tests/clean: tests/CMakeFiles/unit_tests.dir/clean
+tests/clean: _deps/googletest-build/clean
+.PHONY : tests/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/DelMesh.dir
 
 # All Build rule for target.
-CMakeFiles/Delmesh.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Delmesh"
-.PHONY : CMakeFiles/Delmesh.dir/all
+CMakeFiles/DelMesh.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=1,2,3,4,5 "Built target DelMesh"
+.PHONY : CMakeFiles/DelMesh.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Delmesh.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Delmesh.dir/all
+CMakeFiles/DelMesh.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DelMesh.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
-.PHONY : CMakeFiles/Delmesh.dir/rule
+.PHONY : CMakeFiles/DelMesh.dir/rule
 
 # Convenience name for target.
-Delmesh: CMakeFiles/Delmesh.dir/rule
-.PHONY : Delmesh
+DelMesh: CMakeFiles/DelMesh.dir/rule
+.PHONY : DelMesh
 
 # codegen rule for target.
-CMakeFiles/Delmesh.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target Delmesh"
-.PHONY : CMakeFiles/Delmesh.dir/codegen
+CMakeFiles/DelMesh.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target DelMesh"
+.PHONY : CMakeFiles/DelMesh.dir/codegen
 
 # clean rule for target.
-CMakeFiles/Delmesh.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/clean
-.PHONY : CMakeFiles/Delmesh.dir/clean
+CMakeFiles/DelMesh.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/clean
+.PHONY : CMakeFiles/DelMesh.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/DelMeshDemo.dir
+
+# All Build rule for target.
+CMakeFiles/DelMeshDemo.dir/all: CMakeFiles/DelMesh.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=6,7 "Built target DelMeshDemo"
+.PHONY : CMakeFiles/DelMeshDemo.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/DelMeshDemo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DelMeshDemo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
+.PHONY : CMakeFiles/DelMeshDemo.dir/rule
+
+# Convenience name for target.
+DelMeshDemo: CMakeFiles/DelMeshDemo.dir/rule
+.PHONY : DelMeshDemo
+
+# codegen rule for target.
+CMakeFiles/DelMeshDemo.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=6,7 "Finished codegen for target DelMeshDemo"
+.PHONY : CMakeFiles/DelMeshDemo.dir/codegen
+
+# clean rule for target.
+CMakeFiles/DelMeshDemo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/clean
+.PHONY : CMakeFiles/DelMeshDemo.dir/clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/unit_tests.dir
+
+# All Build rule for target.
+tests/CMakeFiles/unit_tests.dir/all: CMakeFiles/DelMesh.dir/all
+tests/CMakeFiles/unit_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/unit_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unit_tests.dir/build.make tests/CMakeFiles/unit_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unit_tests.dir/build.make tests/CMakeFiles/unit_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=16,17 "Built target unit_tests"
+.PHONY : tests/CMakeFiles/unit_tests.dir/all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/unit_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/unit_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
+.PHONY : tests/CMakeFiles/unit_tests.dir/rule
+
+# Convenience name for target.
+unit_tests: tests/CMakeFiles/unit_tests.dir/rule
+.PHONY : unit_tests
+
+# codegen rule for target.
+tests/CMakeFiles/unit_tests.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unit_tests.dir/build.make tests/CMakeFiles/unit_tests.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=16,17 "Finished codegen for target unit_tests"
+.PHONY : tests/CMakeFiles/unit_tests.dir/codegen
+
+# clean rule for target.
+tests/CMakeFiles/unit_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unit_tests.dir/build.make tests/CMakeFiles/unit_tests.dir/clean
+.PHONY : tests/CMakeFiles/unit_tests.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock.dir
+
+# All Build rule for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=8,9 "Built target gmock"
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/rule
+
+# Convenience name for target.
+gmock: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/rule
+.PHONY : gmock
+
+# codegen rule for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=8,9 "Finished codegen for target gmock"
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen
+
+# clean rule for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
+
+# All Build rule for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=10,11 "Built target gmock_main"
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule
+
+# Convenience name for target.
+gmock_main: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule
+.PHONY : gmock_main
+
+# codegen rule for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=10,11 "Finished codegen for target gmock_main"
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen
+
+# clean rule for target.
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/googletest-build/googletest/CMakeFiles/gtest.dir
+
+# All Build rule for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=12,13 "Built target gtest"
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/rule
+
+# Convenience name for target.
+gtest: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/rule
+.PHONY : gtest
+
+# codegen rule for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=12,13 "Finished codegen for target gtest"
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen
+
+# clean rule for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean
+
+#=============================================================================
+# Target rules for target _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir
+
+# All Build rule for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=14,15 "Built target gtest_main"
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
+
+# Build rule for subdir invocation for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/rule
+
+# Convenience name for target.
+gtest_main: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/rule
+.PHONY : gtest_main
+
+# codegen rule for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=14,15 "Finished codegen for target gtest_main"
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen
+
+# clean rule for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

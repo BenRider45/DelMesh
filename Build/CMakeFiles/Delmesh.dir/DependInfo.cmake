@@ -8,11 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/benrider/Documents/Development/DelMesh/src/BWMesh.cpp" "CMakeFiles/Delmesh.dir/src/BWMesh.cpp.o" "gcc" "CMakeFiles/Delmesh.dir/src/BWMesh.cpp.o.d"
-  "/Users/benrider/Documents/Development/DelMesh/src/Edge.cpp" "CMakeFiles/Delmesh.dir/src/Edge.cpp.o" "gcc" "CMakeFiles/Delmesh.dir/src/Edge.cpp.o.d"
-  "/Users/benrider/Documents/Development/DelMesh/src/Point2D.cpp" "CMakeFiles/Delmesh.dir/src/Point2D.cpp.o" "gcc" "CMakeFiles/Delmesh.dir/src/Point2D.cpp.o.d"
-  "/Users/benrider/Documents/Development/DelMesh/src/Triangle.cpp" "CMakeFiles/Delmesh.dir/src/Triangle.cpp.o" "gcc" "CMakeFiles/Delmesh.dir/src/Triangle.cpp.o.d"
-  "/Users/benrider/Documents/Development/DelMesh/src/main.cpp" "CMakeFiles/Delmesh.dir/src/main.cpp.o" "gcc" "CMakeFiles/Delmesh.dir/src/main.cpp.o.d"
+  "/Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp" "CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o" "gcc" "CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o.d"
+  "/Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp" "CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o" "gcc" "CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o.d"
+  "/Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp" "CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o" "gcc" "CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o.d"
+  "/Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp" "CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o" "gcc" "CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

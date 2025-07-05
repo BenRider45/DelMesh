@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /Users/benrider/Documents/Development/DelMesh/Build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/opt/homebrew/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -84,6 +94,51 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\" \"gmock\" \"gtest\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/opt/homebrew/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/opt/homebrew/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -117,120 +172,198 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Delmesh
+# Target rules for targets named DelMesh
 
 # Build rule for target.
-Delmesh: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Delmesh
-.PHONY : Delmesh
+DelMesh: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 DelMesh
+.PHONY : DelMesh
 
 # fast build rule for target.
-Delmesh/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/build
-.PHONY : Delmesh/fast
+DelMesh/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/build
+.PHONY : DelMesh/fast
 
-src/BWMesh.o: src/BWMesh.cpp.o
-.PHONY : src/BWMesh.o
+#=============================================================================
+# Target rules for targets named DelMeshDemo
+
+# Build rule for target.
+DelMeshDemo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 DelMeshDemo
+.PHONY : DelMeshDemo
+
+# fast build rule for target.
+DelMeshDemo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/build
+.PHONY : DelMeshDemo/fast
+
+#=============================================================================
+# Target rules for targets named unit_tests
+
+# Build rule for target.
+unit_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests
+.PHONY : unit_tests
+
+# fast build rule for target.
+unit_tests/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/unit_tests.dir/build.make tests/CMakeFiles/unit_tests.dir/build
+.PHONY : unit_tests/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
+src/DelMesh/DelMesh.o: src/DelMesh/DelMesh.cpp.o
+.PHONY : src/DelMesh/DelMesh.o
 
 # target to build an object file
-src/BWMesh.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/BWMesh.cpp.o
-.PHONY : src/BWMesh.cpp.o
+src/DelMesh/DelMesh.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o
+.PHONY : src/DelMesh/DelMesh.cpp.o
 
-src/BWMesh.i: src/BWMesh.cpp.i
-.PHONY : src/BWMesh.i
+src/DelMesh/DelMesh.i: src/DelMesh/DelMesh.cpp.i
+.PHONY : src/DelMesh/DelMesh.i
 
 # target to preprocess a source file
-src/BWMesh.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/BWMesh.cpp.i
-.PHONY : src/BWMesh.cpp.i
+src/DelMesh/DelMesh.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.i
+.PHONY : src/DelMesh/DelMesh.cpp.i
 
-src/BWMesh.s: src/BWMesh.cpp.s
-.PHONY : src/BWMesh.s
+src/DelMesh/DelMesh.s: src/DelMesh/DelMesh.cpp.s
+.PHONY : src/DelMesh/DelMesh.s
 
 # target to generate assembly for a file
-src/BWMesh.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/BWMesh.cpp.s
-.PHONY : src/BWMesh.cpp.s
+src/DelMesh/DelMesh.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.s
+.PHONY : src/DelMesh/DelMesh.cpp.s
 
-src/Edge.o: src/Edge.cpp.o
-.PHONY : src/Edge.o
+src/DelMesh/Edge.o: src/DelMesh/Edge.cpp.o
+.PHONY : src/DelMesh/Edge.o
 
 # target to build an object file
-src/Edge.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Edge.cpp.o
-.PHONY : src/Edge.cpp.o
+src/DelMesh/Edge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o
+.PHONY : src/DelMesh/Edge.cpp.o
 
-src/Edge.i: src/Edge.cpp.i
-.PHONY : src/Edge.i
+src/DelMesh/Edge.i: src/DelMesh/Edge.cpp.i
+.PHONY : src/DelMesh/Edge.i
 
 # target to preprocess a source file
-src/Edge.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Edge.cpp.i
-.PHONY : src/Edge.cpp.i
+src/DelMesh/Edge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.i
+.PHONY : src/DelMesh/Edge.cpp.i
 
-src/Edge.s: src/Edge.cpp.s
-.PHONY : src/Edge.s
+src/DelMesh/Edge.s: src/DelMesh/Edge.cpp.s
+.PHONY : src/DelMesh/Edge.s
 
 # target to generate assembly for a file
-src/Edge.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Edge.cpp.s
-.PHONY : src/Edge.cpp.s
+src/DelMesh/Edge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.s
+.PHONY : src/DelMesh/Edge.cpp.s
 
-src/Point2D.o: src/Point2D.cpp.o
-.PHONY : src/Point2D.o
+src/DelMesh/Point2D.o: src/DelMesh/Point2D.cpp.o
+.PHONY : src/DelMesh/Point2D.o
 
 # target to build an object file
-src/Point2D.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Point2D.cpp.o
-.PHONY : src/Point2D.cpp.o
+src/DelMesh/Point2D.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o
+.PHONY : src/DelMesh/Point2D.cpp.o
 
-src/Point2D.i: src/Point2D.cpp.i
-.PHONY : src/Point2D.i
+src/DelMesh/Point2D.i: src/DelMesh/Point2D.cpp.i
+.PHONY : src/DelMesh/Point2D.i
 
 # target to preprocess a source file
-src/Point2D.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Point2D.cpp.i
-.PHONY : src/Point2D.cpp.i
+src/DelMesh/Point2D.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.i
+.PHONY : src/DelMesh/Point2D.cpp.i
 
-src/Point2D.s: src/Point2D.cpp.s
-.PHONY : src/Point2D.s
+src/DelMesh/Point2D.s: src/DelMesh/Point2D.cpp.s
+.PHONY : src/DelMesh/Point2D.s
 
 # target to generate assembly for a file
-src/Point2D.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Point2D.cpp.s
-.PHONY : src/Point2D.cpp.s
+src/DelMesh/Point2D.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.s
+.PHONY : src/DelMesh/Point2D.cpp.s
 
-src/Triangle.o: src/Triangle.cpp.o
-.PHONY : src/Triangle.o
+src/DelMesh/Triangle.o: src/DelMesh/Triangle.cpp.o
+.PHONY : src/DelMesh/Triangle.o
 
 # target to build an object file
-src/Triangle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Triangle.cpp.o
-.PHONY : src/Triangle.cpp.o
+src/DelMesh/Triangle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o
+.PHONY : src/DelMesh/Triangle.cpp.o
 
-src/Triangle.i: src/Triangle.cpp.i
-.PHONY : src/Triangle.i
+src/DelMesh/Triangle.i: src/DelMesh/Triangle.cpp.i
+.PHONY : src/DelMesh/Triangle.i
 
 # target to preprocess a source file
-src/Triangle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Triangle.cpp.i
-.PHONY : src/Triangle.cpp.i
+src/DelMesh/Triangle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.i
+.PHONY : src/DelMesh/Triangle.cpp.i
 
-src/Triangle.s: src/Triangle.cpp.s
-.PHONY : src/Triangle.s
+src/DelMesh/Triangle.s: src/DelMesh/Triangle.cpp.s
+.PHONY : src/DelMesh/Triangle.s
 
 # target to generate assembly for a file
-src/Triangle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/Triangle.cpp.s
-.PHONY : src/Triangle.cpp.s
+src/DelMesh/Triangle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.s
+.PHONY : src/DelMesh/Triangle.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -238,7 +371,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -246,7 +379,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Delmesh.dir/build.make CMakeFiles/Delmesh.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMeshDemo.dir/build.make CMakeFiles/DelMeshDemo.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -256,20 +389,31 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... Delmesh"
-	@echo "... src/BWMesh.o"
-	@echo "... src/BWMesh.i"
-	@echo "... src/BWMesh.s"
-	@echo "... src/Edge.o"
-	@echo "... src/Edge.i"
-	@echo "... src/Edge.s"
-	@echo "... src/Point2D.o"
-	@echo "... src/Point2D.i"
-	@echo "... src/Point2D.s"
-	@echo "... src/Triangle.o"
-	@echo "... src/Triangle.i"
-	@echo "... src/Triangle.s"
+	@echo "... test"
+	@echo "... DelMesh"
+	@echo "... DelMeshDemo"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
+	@echo "... unit_tests"
+	@echo "... src/DelMesh/DelMesh.o"
+	@echo "... src/DelMesh/DelMesh.i"
+	@echo "... src/DelMesh/DelMesh.s"
+	@echo "... src/DelMesh/Edge.o"
+	@echo "... src/DelMesh/Edge.i"
+	@echo "... src/DelMesh/Edge.s"
+	@echo "... src/DelMesh/Point2D.o"
+	@echo "... src/DelMesh/Point2D.i"
+	@echo "... src/DelMesh/Point2D.s"
+	@echo "... src/DelMesh/Triangle.o"
+	@echo "... src/DelMesh/Triangle.i"
+	@echo "... src/DelMesh/Triangle.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

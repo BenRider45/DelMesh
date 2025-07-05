@@ -1,19 +1,17 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Delmesh.dir/src/BWMesh.cpp.o"
-  "CMakeFiles/Delmesh.dir/src/BWMesh.cpp.o.d"
-  "CMakeFiles/Delmesh.dir/src/Edge.cpp.o"
-  "CMakeFiles/Delmesh.dir/src/Edge.cpp.o.d"
-  "CMakeFiles/Delmesh.dir/src/Point2D.cpp.o"
-  "CMakeFiles/Delmesh.dir/src/Point2D.cpp.o.d"
-  "CMakeFiles/Delmesh.dir/src/Triangle.cpp.o"
-  "CMakeFiles/Delmesh.dir/src/Triangle.cpp.o.d"
-  "CMakeFiles/Delmesh.dir/src/main.cpp.o"
-  "CMakeFiles/Delmesh.dir/src/main.cpp.o.d"
-  "Delmesh"
-  "Delmesh.pdb"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o.d"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o.d"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o.d"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o.d"
+  "libDelMesh.a"
+  "libDelMesh.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
 foreach(lang CXX)
-  include(CMakeFiles/Delmesh.dir/cmake_clean_${lang}.cmake OPTIONAL)
+  include(CMakeFiles/DelMesh.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()
