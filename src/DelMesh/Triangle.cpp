@@ -88,8 +88,7 @@ int Triangle::checkOrient(){
     // |1   1   1  |
 
     float det = b.V(0)*(c.V(1)-a.V(1)) + a.V(0)*(b.V(1)-c.V(1)) + c.V(0)*(a.V(1)- b.V(1));
-    if (det==0){return 0;}
-    
+        
     return det==0 ? 0 : (det>0 ? 1 : -1);
 }
 
@@ -97,7 +96,7 @@ int Triangle::correctOrient(){
     if(checkOrient() <0){
         Point2D temp = b;
         b = c;
-        c = b;
+        c = temp;
         return -1;
     }
     return 1;

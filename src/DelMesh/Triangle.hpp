@@ -19,7 +19,6 @@
 
 class Triangle{
 public:
-    double calcIncircleDet(Point2D d);
     double calcOrientDet();
     Point2D a;
     Point2D b;
@@ -39,12 +38,7 @@ public:
         this->a = a;
         this->b = b;
         this->c = c;
-        this->AB = Edge(a,b);
-        this->BC = Edge(b,c);
-        this->CA = Edge(c,a);
-        //std::cout<<"Triangle Constructor"<< a;
-        area = computeArea();//Computing Area via shoelace
-        Edges = {AB,BC,CA};
+
         // AB = Edge(a,b);
         // //std::cout<<AB<<"\n";
         // Edges.push_back(AB);
@@ -55,12 +49,19 @@ public:
         if(correctOrient() == -1){
             std::cout<<"Points given in clockwise order\n";
         }
+
+        this->AB = Edge(this->a,this->b);
+        this->BC = Edge(this->b,this->c);
+        this->CA = Edge(this->c,this->a);
+        //std::cout<<"Triangle Constructor"<< a;
+        area = computeArea();//Computing Area via shoelace
+        Edges = {AB,BC,CA};
         
         this->circle = computeCircumcircle();
 
        // std::cout<<"Triangle Constructor circle: "<<this->circle<<'\n';
     };
-    float computeArea() { return .5 *((b.V(0) - a.V(0))*(c.V(1)-a.V(1)))- ((c.V(0) - a.V(0)) * (b.V(1)-a.V(1))); };
+    float computeArea() { return .5 * ((a.V(0)*b.V(1) + b.V(0)*c.V(1)+ c.V(0)*a.V(1)) - (a.V(1)*b.V(0)+b.V(1)*c.V(0)+c.V(1)*a.V(0)));}
     
     int checkOrient(); //returns 1 if oriented correctly, returns -1 if not oriented correctly, and 0 if points are colinear
     int correctOrient(); // returns 1 if points did not need correction, -1 if points were corrected
