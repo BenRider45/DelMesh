@@ -56,7 +56,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /Users/benrider/Documents/Development/DelMesh
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/benrider/Documents/Development/DelMesh/Build
+CMAKE_BINARY_DIR = /Users/benrider/Documents/Development/DelMesh/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/DelMesh.dir/depend.make
@@ -75,58 +75,58 @@ CMakeFiles/DelMesh.dir/codegen:
 CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o: CMakeFiles/DelMesh.dir/flags.make
 CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o: /Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp
 CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o: CMakeFiles/DelMesh.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp
 
 CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.i
 
 CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/DelMesh.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.s
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o: CMakeFiles/DelMesh.dir/flags.make
 CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o: /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp
 CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o: CMakeFiles/DelMesh.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.i
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Edge.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.s
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o: CMakeFiles/DelMesh.dir/flags.make
 CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o: /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp
 CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o: CMakeFiles/DelMesh.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.i
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Point2D.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.s
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o: CMakeFiles/DelMesh.dir/flags.make
 CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o: /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp
 CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o: CMakeFiles/DelMesh.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o -MF CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o.d -o CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o -c /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp > CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.i
 
 CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/benrider/Documents/Development/DelMesh/src/DelMesh/Triangle.cpp -o CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.s
 
 # Object files for target DelMesh
 DelMesh_OBJECTS = \
@@ -144,7 +144,7 @@ libDelMesh.a: CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o
 libDelMesh.a: CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o
 libDelMesh.a: CMakeFiles/DelMesh.dir/build.make
 libDelMesh.a: CMakeFiles/DelMesh.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libDelMesh.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libDelMesh.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/DelMesh.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DelMesh.dir/link.txt --verbose=$(VERBOSE)
 
@@ -157,6 +157,6 @@ CMakeFiles/DelMesh.dir/clean:
 .PHONY : CMakeFiles/DelMesh.dir/clean
 
 CMakeFiles/DelMesh.dir/depend:
-	cd /Users/benrider/Documents/Development/DelMesh/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/benrider/Documents/Development/DelMesh /Users/benrider/Documents/Development/DelMesh /Users/benrider/Documents/Development/DelMesh/Build /Users/benrider/Documents/Development/DelMesh/Build /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles/DelMesh.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/benrider/Documents/Development/DelMesh/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/benrider/Documents/Development/DelMesh /Users/benrider/Documents/Development/DelMesh /Users/benrider/Documents/Development/DelMesh/build /Users/benrider/Documents/Development/DelMesh/build /Users/benrider/Documents/Development/DelMesh/build/CMakeFiles/DelMesh.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/DelMesh.dir/depend
 

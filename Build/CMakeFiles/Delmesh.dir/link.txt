@@ -1,2 +1,2 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libDelMesh.a CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libDelMesh.a
+/usr/bin/ar qc libDelMesh.a CMakeFiles/DelMesh.dir/src/DelMesh/DelMesh.cpp.o CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o
+/usr/bin/ranlib libDelMesh.a

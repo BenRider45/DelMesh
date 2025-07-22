@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -34,14 +34,19 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/benrider/Documents/Development/DelMesh/build/tests/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/benrider/Documents/Development/DelMesh/Build/libDelMesh.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/benrider/Documents/Development/DelMesh/build/libDelMesh.a")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDelMesh.a" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDelMesh.a")
-    execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDelMesh.a")
+    execute_process(COMMAND "/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDelMesh.a")
   endif()
 endif()
 
@@ -53,7 +58,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh/DelMeshTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh/DelMeshTargets.cmake"
-         "/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles/Export/edb6b1622107b9e0b44fd588b71501c5/DelMeshTargets.cmake")
+         "/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles/Export/edb6b1622107b9e0b44fd588b71501c5/DelMeshTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh/DelMeshTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -66,29 +71,23 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh" TYPE FILE FILES "/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles/Export/edb6b1622107b9e0b44fd588b71501c5/DelMeshTargets.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh" TYPE FILE FILES "/Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles/Export/edb6b1622107b9e0b44fd588b71501c5/DelMeshTargets-noconfig.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh" TYPE FILE FILES "/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles/Export/edb6b1622107b9e0b44fd588b71501c5/DelMeshTargets.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh" TYPE FILE FILES "/Users/benrider/Documents/Development/DelMesh/build/CMakeFiles/Export/edb6b1622107b9e0b44fd588b71501c5/DelMeshTargets-debug.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/DelMesh" TYPE FILE FILES
-    "/Users/benrider/Documents/Development/DelMesh/Build/DelMeshConfig.cmake"
-    "/Users/benrider/Documents/Development/DelMesh/Build/DelMeshConfigVersion.cmake"
+    "/Users/benrider/Documents/Development/DelMesh/build/DelMeshConfig.cmake"
+    "/Users/benrider/Documents/Development/DelMesh/build/DelMeshConfigVersion.cmake"
     )
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/Users/benrider/Documents/Development/DelMesh/Build/tests/cmake_install.cmake")
-
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/benrider/Documents/Development/DelMesh/Build/install_local_manifest.txt"
+  file(WRITE "/Users/benrider/Documents/Development/DelMesh/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -104,6 +103,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/benrider/Documents/Development/DelMesh/Build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/Users/benrider/Documents/Development/DelMesh/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
