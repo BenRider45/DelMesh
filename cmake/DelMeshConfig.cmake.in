@@ -1,0 +1,14 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/DelMeshTargets.cmake")
+
+# Handle Eigen dependency
+if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/../../../src/eigen")
+    set(EIGEN_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/../../../src/eigen")
+elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/../../../src/Eigen")
+    set(EIGEN_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/../../../src/Eigen")
+else()
+    find_dependency(Eigen3 REQUIRED)
+endif()
+
+check_required_components(DelMesh)

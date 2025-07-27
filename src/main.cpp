@@ -10,15 +10,15 @@
 // Write orientation check
 // Write incircle
 #include <iostream>
-#include "Point2D.hpp"
-#include "BWMesh.hpp"
+#include "DelMesh/Point2D.hpp"
+#include "DelMesh/DelMesh.hpp"
 
 int main(int argc, const char * argv[]) {
 
 
     Point2D testPoint = Point2D(3.4214,2.6667543);
     
-    BWMesh Mesh = BWMesh();
+    DelMesh Mesh = DelMesh();
     Point2D MAX_XY = Point2D(10, 10);
     Point2D MIN_XY = Point2D(-10,-10);
    // std::string fPath =  + "/Delauney Mesh\s Generation/External";
@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
    //TESTING SEED
    //std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),4,100,"../PointFiles/TestPointFil3e.txt");
 
-    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),200,100,"../PointFiles/TestPointFil3e.txt");
+    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),10,10,"../PointFiles/TestPointFil4e.txt");
     
     Mesh.pointList = Mesh.readPointListFromFile(pointFPath);
 
@@ -34,11 +34,27 @@ int main(int argc, const char * argv[]) {
         std::cout<<Mesh.pointList[i]<<"\n";
 
     }
+    Point2D a = Point2D(-10,0);
+    Point2D b = Point2D(10,0);
+    Point2D c = Point2D(0,20);
+
+    Triangle t = Triangle(a,b,c);
+
+    Point2D inTriangle = Point2D(0,5);
+
+    std::cout<<"inTriangle checkIncircle:"<<t.checkIncircle(inTriangle)<<"\n";
+
+    Point2D outTriangle = Point2D(0,30);
+
+    std::cout<<"outTriangle checkIncircle:"<<t.checkIncircle(outTriangle)<<"\n";
+
+    Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
+    std::cout<< supTriang;
+
+    std::vector<Triangle> m = Mesh.BowyerWatson(Mesh.pointList,supTriang);
 
     
-    Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
-    
-    std::cout<< supTriang;
+
 
 
     return 0;

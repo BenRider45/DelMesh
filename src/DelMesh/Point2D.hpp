@@ -22,7 +22,7 @@ public:
     
     bool inTriangle;
    
-    
+    float mag;
     //1
     
 //    If the slope is zero, you know the 𝑦
@@ -35,10 +35,18 @@ public:
 //     in the line bisecting the segment between the third point
 //     and one of the two you have used.
     
-    Point2D(Eigen::Vector2f init_coordinates): V(init_coordinates), inTriangle(false) {};
+    Point2D(Eigen::Vector2f init_coordinates): V(init_coordinates), inTriangle(false) {
+        mag = pow(V(0),2) + pow(V(1),2);
+    };
     Point2D() {};
-    Point2D(float x, float y) : V(Eigen::Vector2f(x,y)), inTriangle(false) {};
-    Point2D(Eigen::Vector2f coords,bool newInTriangle) {V = coords; inTriangle = newInTriangle; }
+    Point2D(float x, float y) : V(Eigen::Vector2f(x,y)), inTriangle(false) {
+        mag = pow(V(0),2) + pow(V(1),2);
+    };
+    Point2D(Eigen::Vector2f coords,bool newInTriangle) {
+        V = coords; 
+        inTriangle = newInTriangle; 
+        mag = pow(V(0),2) + pow(V(1),2);
+    }
     
     friend std::ostream& operator <<(std::ostream& os, const Point2D& pt);
     

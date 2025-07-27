@@ -1,12 +1,12 @@
 //
-//  BWMesh.hpp
+//  DelMesh.hpp
 //  Delauney Mesh Generation
 //
 //  Created by Ben Rider on 1/15/25.
 //
 
-#ifndef BWMesh_hpp
-#define BWMesh_hpp
+#ifndef DelMesh_hpp
+#define DelMesh_hpp
 
 #include <stdio.h>
 #include <vector>
@@ -14,10 +14,10 @@
 #include "Point2D.hpp"
 #include "Triangle.hpp"
 
-class BWMesh {
+class DelMesh {
     
 public:
-    BWMesh();
+    DelMesh();
     std::vector<Triangle> connecArray;//connectivity array
     std::vector<Point2D> pointList; //Point list
     double maxX,maxY,minX,minY;
@@ -50,4 +50,4 @@ public:
 
 
 
-#endif /* BWMesh_hpp */
+#endif /* DelMesh_hpp */

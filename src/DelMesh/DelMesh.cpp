@@ -1,24 +1,25 @@
 //
-//  BWMesh.cpp
+//  Delmesh.cpp
 //  Delauney Mesh Generation
 //
 //  Created by Ben Rider on 1/15/25.
 //
 
-#include "BWMesh.hpp"
+#include "DelMesh.hpp"
 #include <fstream>
 #include "Point2D.hpp"
 #include <random>
 #include <iostream>
 #include <filesystem>
 #include <string>
-BWMesh::BWMesh(){
+#include "Eigen/Dense"
+DelMesh::DelMesh(){
     this->connecArray = std::vector<Triangle>();
     this->pointList = std::vector<Point2D>();
     
 }
 
-std::string BWMesh::generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName){
+std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName){
     
     
     std::fstream outFile;
@@ -66,7 +67,7 @@ std::string BWMesh::generateRandPtLst(double minX, double maxX, double minY, dou
     return fileName;
 }
 
-std::vector<Point2D> BWMesh::readPointListFromFile(std::string filePath){
+std::vector<Point2D> DelMesh::readPointListFromFile(std::string filePath){
     
     std::vector<Point2D> Output;
     std::fstream inFile(filePath);
@@ -99,7 +100,7 @@ std::vector<Point2D> BWMesh::readPointListFromFile(std::string filePath){
     
 }
 
-void BWMesh::findMaxMin(){
+void DelMesh::findMaxMin(){
     if(this->pointList.size()==0){
         return;
     }
@@ -137,7 +138,7 @@ void BWMesh::findMaxMin(){
     
 }
 
-Point2D BWMesh::getMeanPt(){
+Point2D DelMesh::getMeanPt(){
     double xMean = 0;
     double yMean = 0;
     for(int i=0;i<this->pointList.size();i++){
@@ -153,7 +154,7 @@ Point2D BWMesh::getMeanPt(){
 }
 
 
-Triangle BWMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
+Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     if(this->pointList.size()==0){
         return Triangle(Point2D(0, 0),Point2D(0, 0),Point2D(0, 0));
     }
@@ -221,7 +222,7 @@ Triangle BWMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
 }
 
 
-std::vector<Triangle> BWMesh::BowyerWatson(std::vector<Point2D> pointList, Triangle SuperTriag){  
+std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Triangle SuperTriag){  
     std::vector<Triangle> Triangulation = {SuperTriag}; 
     for(int i=0; i<pointList.size(); i++){
         //Hash Map for coordinate lookup potentially (radially based using eucidian distance from origin?)
@@ -231,37 +232,40 @@ std::vector<Triangle> BWMesh::BowyerWatson(std::vector<Point2D> pointList, Trian
             if(Triangulation[j].checkIncircle(pointList[i])){
                 //Remove from triangulationd
                 //Store edges of triangle
-                
                 badTriangleList.emplace_back(Triangulation[j]);
                 //Remove Bad Triangle From List
             }
 
-
+            std::cout<<"Got to Triangulation loop\n";
         } 
-        
-        //Getting Convex hull of new whole in mesh
+        std::cout<<"got out of Triangulation loop\n";
+        //Getting Convex hull of new hole in mesh
         for(int j=0; j<badTriangleList.size();j++){
+            std::cout<<"Got to badTriangleList loop\n";
             for(int k=0; k<3; k++){
-
+                std::cout<<"Got to Triangle Edge Loop\n";
                 for(int h=0; h<polygonEdgeList.size(); h++){
                     if(badTriangleList[j].Edges[k]== polygonEdgeList[h]){
                         break;
                     }
+                    std::cout<<"Polygon edge List loop\n";
                     polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);                
                 
                 }
                 polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);
                 
             }
-
+            
         }
 
         for(int j=0; j<polygonEdgeList.size();j++){
-            //Make new triangle add to Triangulation
+            Triangle T = Triangle(pointList[i],polygonEdgeList[j].a,polygonEdgeList[j].b);
+            Triangulation.emplace_back();
         }
 
 
 
 
     }
+
 }
