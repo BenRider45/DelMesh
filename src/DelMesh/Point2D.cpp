@@ -15,6 +15,8 @@ std::ostream& operator <<(std::ostream& os, const Point2D& pt){
     return os;
 }
 
+
+
 //Euclidian distance from another point
 float Point2D::dist(Point2D other){
     return sqrt( pow(V(0) - other.V(0),2) + pow(V(1) - other.V(1),2));

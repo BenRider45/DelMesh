@@ -16,7 +16,6 @@
 DelMesh::DelMesh(){
     this->connecArray = std::vector<Triangle>();
     this->pointList = std::vector<Point2D>();
-    
 }
 
 std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName){
@@ -101,6 +100,36 @@ std::vector<Point2D> DelMesh::readPointListFromFile(std::string filePath){
 }
 
 void DelMesh::findMaxMin(){
+    //Use std::minmaxElement
+    
+    //Start Sorting radially now! 
+    
+    
+    std::pair<std::vector<Point2D>::iterator, std::vector<Point2D>::iterator> mnmx;
+
+    mnmx = std::minmax_element(pointList.begin(), pointList.end());
+
+    std::cout << "The minimum value position obtained is : ";
+    std::cout << mnmx.first - pointList.begin() << std::endl;
+        
+    std::cout << "The maximum value position obtained is : ";
+    std::cout << mnmx.second - pointList.begin() << std::endl;
+        
+    std::cout << std::endl;
+        
+    // using duplicated
+    // prints 1 and 5 respectively
+    mnmx = std::minmax_element(pointList.begin(), pointList.end());
+        
+    // printing position of minimum and maximum values.
+    std::cout << "The minimum value position obtained is : ";
+    std::cout << mnmx.first - pointList.begin() << std::endl;
+        
+    std::cout << "The maximum value position obtained is : ";
+    std::cout << mnmx.second - pointList.begin()<< std::endl;
+    
+
+
     if(this->pointList.size()==0){
         return;
     }
