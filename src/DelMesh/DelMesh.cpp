@@ -99,6 +99,13 @@ std::vector<Point2D> DelMesh::readPointListFromFile(std::string filePath){
     
 }
 
+std::vector<Point2D> DelMesh::radialSort(std::vector<Point2D> pntLst){
+    std::vector<Point2D> output = pntLst;
+    std::sort(output.begin(),output.end());
+    return output;
+}
+
+
 void DelMesh::findMaxMin(){
     //Use std::minmaxElement
     
@@ -109,25 +116,16 @@ void DelMesh::findMaxMin(){
 
     mnmx = std::minmax_element(pointList.begin(), pointList.end());
 
-    std::cout << "The minimum value position obtained is : ";
+    std::cout << "\nThe minimum value position obtained is : ";
     std::cout << mnmx.first - pointList.begin() << std::endl;
-        
-    std::cout << "The maximum value position obtained is : ";
+    std::cout << "Min value: "<< pointList.at(mnmx.first - pointList.begin())<< "\n";
+
+    std::cout << "\nThe maximum value position obtained is : ";
     std::cout << mnmx.second - pointList.begin() << std::endl;
-        
+
+    std::cout << "Max value: "<< pointList.at(mnmx.second - pointList.begin())<< "\n";
     std::cout << std::endl;
-        
-    // using duplicated
-    // prints 1 and 5 respectively
-    mnmx = std::minmax_element(pointList.begin(), pointList.end());
-        
-    // printing position of minimum and maximum values.
-    std::cout << "The minimum value position obtained is : ";
-    std::cout << mnmx.first - pointList.begin() << std::endl;
-        
-    std::cout << "The maximum value position obtained is : ";
-    std::cout << mnmx.second - pointList.begin()<< std::endl;
-    
+
 
 
     if(this->pointList.size()==0){
@@ -257,31 +255,41 @@ std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Tria
         //Hash Map for coordinate lookup potentially (radially based using eucidian distance from origin?)
         std::vector<Triangle> badTriangleList = {};
         std::vector<Edge> polygonEdgeList = {};
-        for(int j=0;i<Triangulation.size();j++){
+        for(int j=0;j<Triangulation.size();j++){
             if(Triangulation[j].checkIncircle(pointList[i])){
+                std::cout<<"Bad Triangle";
                 //Remove from triangulationd
                 //Store edges of triangle
-                badTriangleList.emplace_back(Triangulation[j]);
+                badTriangleList.push_back(Triangulation[j]);
                 //Remove Bad Triangle From List
             }
 
             std::cout<<"Got to Triangulation loop\n";
-        } 
+        }
+
+    
         std::cout<<"got out of Triangulation loop\n";
         //Getting Convex hull of new hole in mesh
-        for(int j=0; j<badTriangleList.size();j++){
+        for(Triangle badTriangle : badTriangleList){
             std::cout<<"Got to badTriangleList loop\n";
+            
             for(int k=0; k<3; k++){
+                
                 std::cout<<"Got to Triangle Edge Loop\n";
-                for(int h=0; h<polygonEdgeList.size(); h++){
-                    if(badTriangleList[j].Edges[k]== polygonEdgeList[h]){
-                        break;
+                int times_seen = 0;
+                for(Edge polyEdge : polygonEdgeList){
+                    
+                    if(badTriangle.Edges[k]== polyEdge){
+                        times_seen ++;
+                        std::cout<<"Seen!";
                     }
                     std::cout<<"Polygon edge List loop\n";
-                    polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);                
-                
+                    if(times_seen ==1){
+                        polygonEdgeList.push_back(badTriangle.Edges[k]);                
+                    }
+                    
                 }
-                polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);
+                
                 
             }
             

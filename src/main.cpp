@@ -29,6 +29,7 @@ int main(int argc, const char * argv[]) {
     std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),10,10,"../PointFiles/TestPointFil4e.txt");
     
     Mesh.pointList = Mesh.readPointListFromFile(pointFPath);
+    Mesh.pointList = Mesh.radialSort(Mesh.pointList);
 
     for(int i=0; i<Mesh.pointList.size(); i++){
         std::cout<<Mesh.pointList[i]<<"\n";
@@ -51,9 +52,20 @@ int main(int argc, const char * argv[]) {
     Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
     std::cout<< supTriang;
 
+    Mesh.findMaxMin();
+    std::sort(Mesh.pointList.begin(), Mesh.pointList.end());
+    std::cout<< "sorted Pointlist: \n";
+    for(Point2D pnt : Mesh.pointList){
+        std::cout <<pnt<<"\n";
+    }    
+
+
+
+
+
     std::vector<Triangle> m = Mesh.BowyerWatson(Mesh.pointList,supTriang);
 
-    
+
 
 
 

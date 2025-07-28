@@ -48,12 +48,12 @@ public:
         mag = pow(V(0),2) + pow(V(1),2);
     }
 
-    friend bool operator< (Point2D& a, Point2D& b);
-    
-    // bool operator<(const Point2D& other) const
-    // {
-    //     return V.norm() < other.V.norm();
-    // }
+   bool operator<(const Point2D& other) const {
+            return V.norm() < other.V.norm();
+        }
+
+    friend std::ostream& operator <<(std::ostream& os, const Point2D& pt);
+
     
     bool operator==(const Point2D& other) const {return this->V == other.V;}
     
