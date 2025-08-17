@@ -17,7 +17,11 @@ Circle Triangle::computeCircumcircle(){
     //This loop ensures we will never choose a side with a slope of 0.
     
     for(int i=0; i<3; i++){
-        if(this->Edges.at(i).slope==0.0){
+        std::cout << "this->Edges.at(i).slope:" << this->Edges.at(i).slope << "\n";
+        std::cout << "this->Edges.at(i).SLOPE_ZERO: " << this->Edges.at(i).SLOPE_ZERO << "\n"; 
+        if(this->Edges.at(i).SLOPE_ZERO){
+            
+            std::cout <<"index i: "<< i << "\n";
             A_idx = i-1;
             B_idx = i+1;
             if(A_idx == -1){A_idx = 2; }
@@ -27,11 +31,17 @@ Circle Triangle::computeCircumcircle(){
         }
         
     }
+    std::cout << "A_idx: "<< A_idx << "\n";
+    std::cout << "B_idx: "<< B_idx << "\n";
+
+    std::cout << "============\n";
 
 
 
     Edge A = this->Edges.at(A_idx);
-    float A_perpM;
+    std::cout << "Edge at A_idx: " << A << '\n'; 
+
+    double A_perpM;
     if(A.SLOPE_INF){
         A_perpM = 0;
     }else{
@@ -40,22 +50,25 @@ Circle Triangle::computeCircumcircle(){
 
     
     Edge B = this->Edges.at(B_idx);
-    float B_perpM;
+    std::cout << "Edge at B_idx: " << B << '\n'; 
+
+    double B_perpM;
     if(B.SLOPE_INF){
         B_perpM = 0;
     }else{
         B_perpM = -1/B.slope;
     }
     
-    float denom = B_perpM - A_perpM;
-    float X_Num = (B_perpM*B.midPt.V(0)) - (A_perpM*A.midPt.V(0)) + (A.midPt.V(1) - B.midPt.V(1));
-    float Y_Num = (pow(B_perpM,2)*B.midPt.V(0)) - (A_perpM*B_perpM*A.midPt.V(0)) + B_perpM*(A.midPt.V(1) - B.midPt.V(1));
-    float Y_Res = -B_perpM*B.midPt.V(0) + B.midPt.V(1);
+    
+    double denom = B_perpM - A_perpM;
+    double X_Num = (B_perpM*B.midPt.V(0)) - (A_perpM*A.midPt.V(0)) + (A.midPt.V(1) - B.midPt.V(1));
+    double Y_Num = (pow(B_perpM,2)*B.midPt.V(0)) - (A_perpM*B_perpM*A.midPt.V(0)) + B_perpM*(A.midPt.V(1) - B.midPt.V(1));
+    double Y_Res = -B_perpM*B.midPt.V(0) + B.midPt.V(1);
         
-    float CircCenter_X = X_Num / denom;
-    float CircCenter_Y = (Y_Num /denom) + Y_Res;
+    double CircCenter_X =  X_Num / denom;
+    double CircCenter_Y = (Y_Num /denom) + Y_Res;
     Point2D CirclePoint = Point2D(CircCenter_X,CircCenter_Y);
-    float CircleRadius = sqrt(pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2));
+    double CircleRadius = sqrt(pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2));
     Circle output = Circle(CirclePoint,CircleRadius);
 
     if(CircleRadius == NULL){
@@ -87,7 +100,7 @@ int Triangle::checkOrient(){
     // |a_y b_y c_y|
     // |1   1   1  |
 
-    float det = b.V(0)*(c.V(1)-a.V(1)) + a.V(0)*(b.V(1)-c.V(1)) + c.V(0)*(a.V(1)- b.V(1));
+    double det = b.V(0)*(c.V(1)-a.V(1)) + a.V(0)*(b.V(1)-c.V(1)) + c.V(0)*(a.V(1)- b.V(1));
         
     return det==0 ? 0 : (det>0 ? 1 : -1);
 }

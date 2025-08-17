@@ -16,7 +16,6 @@
 DelMesh::DelMesh(){
     this->connecArray = std::vector<Triangle>();
     this->pointList = std::vector<Point2D>();
-    
 }
 
 std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName){
@@ -100,7 +99,35 @@ std::vector<Point2D> DelMesh::readPointListFromFile(std::string filePath){
     
 }
 
+std::vector<Point2D> DelMesh::radialSort(std::vector<Point2D> pntLst){
+    std::vector<Point2D> output = pntLst;
+    std::sort(output.begin(),output.end());
+    return output;
+}
+
+
 void DelMesh::findMaxMin(){
+    //Use std::minmaxElement
+    
+    //Start Sorting radially now! 
+    
+    
+    std::pair<std::vector<Point2D>::iterator, std::vector<Point2D>::iterator> mnmx;
+
+    mnmx = std::minmax_element(pointList.begin(), pointList.end());
+
+    std::cout << "\nThe minimum value position obtained is : ";
+    std::cout << mnmx.first - pointList.begin() << std::endl;
+    std::cout << "Min value: "<< pointList.at(mnmx.first - pointList.begin())<< "\n";
+
+    std::cout << "\nThe maximum value position obtained is : ";
+    std::cout << mnmx.second - pointList.begin() << std::endl;
+
+    std::cout << "Max value: "<< pointList.at(mnmx.second - pointList.begin())<< "\n";
+    std::cout << std::endl;
+
+
+
     if(this->pointList.size()==0){
         return;
     }
@@ -160,12 +187,12 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     }
     Point2D meanPoint= this->getMeanPt();
     
-    float DeltaX = MAX_XY.V(0)-MIN_XY.V(0);
-    float DeltaY = MAX_XY.V(1)-MIN_XY.V(1);
-    float maxCircX  = maxX;
-    float minCircX = minX;
-    float maxCircY = maxY;
-    float minCircY = minY;
+    double DeltaX = MAX_XY.V(0)-MIN_XY.V(0);
+    double DeltaY = MAX_XY.V(1)-MIN_XY.V(1);
+    double maxCircX  = maxX;
+    double minCircX = minX;
+    double maxCircY = maxY;
+    double minCircY = minY;
     for(int i=0; i<this->pointList.size()-2; i++){
         for(int j=i+1; j< this->pointList.size()-1; j++){
             for(int k = j+1; k < this->pointList.size(); k++){
@@ -190,22 +217,22 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     // std::cout<<"maxCircY: "<<maxCircY<<"\n";
     // std::cout<<"minCircX: "<<minCircX<<"\n";
     // std::cout<<"minCircY: "<<minCircY<<"\n";
-    float C_supX = (maxCircX + minCircX) /2;
-    float C_supY = (maxCircY + minCircY) /2;
+    double C_supX = (maxCircX + minCircX) /2;
+    double C_supY = (maxCircY + minCircY) /2;
 
     Point2D C_supPoint = Point2D(C_supX,C_supY);
     Point2D maxCIRCXY = Point2D(maxCircX,maxCircY);
 
-    float r_cc = C_supPoint.dist(maxCIRCXY);
-    float r_scc = 2*r_cc;
+    double r_cc = C_supPoint.dist(maxCIRCXY);
+    double r_scc = 2*r_cc;
 
 
-    float A_y = C_supY + r_scc;
+    double A_y = C_supY + r_scc;
     
-    float BC_y = C_supY - r_scc/2;
+    double BC_y = C_supY - r_scc/2;
 
-    float B_x = C_supX + (3.0/2.0)*r_scc*tan(M_PI/6);
-    float C_x = C_supX - (3.0/2.0)*r_scc*tan(M_PI/6);
+    double B_x = C_supX + (3.0/2.0)*r_scc*tan(M_PI/6);
+    double C_x = C_supX - (3.0/2.0)*r_scc*tan(M_PI/6);
 
     // std::cout<<"B_X: "<<B_x<<"\n";
     // std::cout<<"C_X: "<<C_x<<"\n";
@@ -228,31 +255,41 @@ std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Tria
         //Hash Map for coordinate lookup potentially (radially based using eucidian distance from origin?)
         std::vector<Triangle> badTriangleList = {};
         std::vector<Edge> polygonEdgeList = {};
-        for(int j=0;i<Triangulation.size();j++){
+        for(int j=0;j<Triangulation.size();j++){
             if(Triangulation[j].checkIncircle(pointList[i])){
+                std::cout<<"Bad Triangle\n";
                 //Remove from triangulationd
                 //Store edges of triangle
-                badTriangleList.emplace_back(Triangulation[j]);
+                badTriangleList.push_back(Triangulation[j]);
                 //Remove Bad Triangle From List
             }
 
             std::cout<<"Got to Triangulation loop\n";
-        } 
+        }  
+        
+        
         std::cout<<"got out of Triangulation loop\n";
         //Getting Convex hull of new hole in mesh
-        for(int j=0; j<badTriangleList.size();j++){
+        for(Triangle badTriangle : badTriangleList){
             std::cout<<"Got to badTriangleList loop\n";
+            
             for(int k=0; k<3; k++){
+                
                 std::cout<<"Got to Triangle Edge Loop\n";
-                for(int h=0; h<polygonEdgeList.size(); h++){
-                    if(badTriangleList[j].Edges[k]== polygonEdgeList[h]){
-                        break;
+                int times_seen = 0;
+                for(Edge polyEdge : polygonEdgeList){
+                    
+                    if(badTriangle.Edges[k]== polyEdge){
+                        times_seen ++;
+                        std::cout<<"Seen!";
                     }
                     std::cout<<"Polygon edge List loop\n";
-                    polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);                
-                
+                    if(times_seen ==1){
+                        polygonEdgeList.push_back(badTriangle.Edges[k]);                
+                    }
+                    
                 }
-                polygonEdgeList.emplace_back(badTriangleList[j].Edges[k]);
+                
                 
             }
             

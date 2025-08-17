@@ -365,6 +365,30 @@ src/DelMesh/Triangle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.s
 .PHONY : src/DelMesh/Triangle.cpp.s
 
+src/DelMesh/UTIL.o: src/DelMesh/UTIL.cpp.o
+.PHONY : src/DelMesh/UTIL.o
+
+# target to build an object file
+src/DelMesh/UTIL.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/UTIL.cpp.o
+.PHONY : src/DelMesh/UTIL.cpp.o
+
+src/DelMesh/UTIL.i: src/DelMesh/UTIL.cpp.i
+.PHONY : src/DelMesh/UTIL.i
+
+# target to preprocess a source file
+src/DelMesh/UTIL.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/UTIL.cpp.i
+.PHONY : src/DelMesh/UTIL.cpp.i
+
+src/DelMesh/UTIL.s: src/DelMesh/UTIL.cpp.s
+.PHONY : src/DelMesh/UTIL.s
+
+# target to generate assembly for a file
+src/DelMesh/UTIL.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/UTIL.cpp.s
+.PHONY : src/DelMesh/UTIL.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -422,6 +446,9 @@ help:
 	@echo "... src/DelMesh/Triangle.o"
 	@echo "... src/DelMesh/Triangle.i"
 	@echo "... src/DelMesh/Triangle.s"
+	@echo "... src/DelMesh/UTIL.o"
+	@echo "... src/DelMesh/UTIL.i"
+	@echo "... src/DelMesh/UTIL.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

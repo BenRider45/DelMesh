@@ -13,7 +13,6 @@
 #include "Point2D.hpp"
 #include "Edge.hpp"
 #include "Circle.hpp"
-
 #endif /* Triangle_hpp */
 
 
@@ -28,8 +27,8 @@ public:
     Edge CA;
     std::vector<Edge> Edges;
     Circle circle;
-    float area;
-    float perim;
+    double area;
+    double perim;
 
 
     Triangle() {};
@@ -53,6 +52,10 @@ public:
         this->AB = Edge(this->a,this->b);
         this->BC = Edge(this->b,this->c);
         this->CA = Edge(this->c,this->a);
+        std::cout << "AB: " << AB << "\n";
+        std::cout << "BC: " << BC << "\n";
+        std::cout << "CA: " << CA << "\n";
+
         //std::cout<<"Triangle Constructor"<< a;
         area = computeArea();//Computing Area via shoelace
         Edges = {AB,BC,CA};
@@ -61,7 +64,7 @@ public:
 
        // std::cout<<"Triangle Constructor circle: "<<this->circle<<'\n';
     };
-    float computeArea() { return .5 * ((a.V(0)*b.V(1) + b.V(0)*c.V(1)+ c.V(0)*a.V(1)) - (a.V(1)*b.V(0)+b.V(1)*c.V(0)+c.V(1)*a.V(0)));}
+    double computeArea() { return .5 * ((a.V(0)*b.V(1) + b.V(0)*c.V(1)+ c.V(0)*a.V(1)) - (a.V(1)*b.V(0)+b.V(1)*c.V(0)+c.V(1)*a.V(0)));}
     
     int checkOrient(); //returns 1 if oriented correctly, returns -1 if not oriented correctly, and 0 if points are colinear
     int correctOrient(); // returns 1 if points did not need correction, -1 if points were corrected

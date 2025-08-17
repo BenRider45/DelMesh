@@ -13,7 +13,7 @@ class Circle {
 public:
     
     Point2D center;
-    float radius;
+    double radius;
     struct Box{
         Point2D XY_MAX;
         Point2D XY_MIN;
@@ -21,7 +21,7 @@ public:
     } Box;
     Circle() { };
 
-    Circle(Point2D init_center, float init_radius) : center(init_center), radius(init_radius) {
+    Circle(Point2D init_center, double init_radius) : center(init_center), radius(init_radius) {
         Box.XY_MAX.V(0) = init_center.V(0) + init_radius;
         Box.XY_MIN.V(0) = init_center.V(0) - init_radius;
 

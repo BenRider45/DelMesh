@@ -1,7 +1,7 @@
 //
 //  Point2D.hpp
 //  Delauney Mesh Generation
-//  Helper class which represents a 2D point on in cartesian coordinates
+//  Helper class which represents a 2D point in cartesian coordinates
 //  Created by Ben Rider on 1/13/25.
 //
 
@@ -12,17 +12,17 @@
 #include <iostream>
 #include "Eigen/Dense"
 #include <cmath>
-
+#include "UTIL.hpp"
 class Point2D {
      
     
 public:
 
-    Eigen::Vector2f V;//Point Vector
+    Eigen::Vector2d V;//Point Vector
     
     bool inTriangle;
    
-    float mag;
+    double mag;
     //1
     
 //    If the slope is zero, you know the 𝑦
@@ -35,24 +35,45 @@ public:
 //     in the line bisecting the segment between the third point
 //     and one of the two you have used.
     
-    Point2D(Eigen::Vector2f init_coordinates): V(init_coordinates), inTriangle(false) {
+    Point2D(Eigen::Vector2d init_coordinates)  {
+
+
+        init_coordinates(0) = init_coordinates(0);
+        init_coordinates(1) = init_coordinates(1);
+
         mag = pow(V(0),2) + pow(V(1),2);
+        inTriangle = false;
     };
+
     Point2D() {};
-    Point2D(float x, float y) : V(Eigen::Vector2f(x,y)), inTriangle(false) {
+    Point2D(double x, double y) : inTriangle(false) {
+        //Processing coords
+        V = Eigen::Vector2d(x,y);
+
         mag = pow(V(0),2) + pow(V(1),2);
+        inTriangle = false;
     };
-    Point2D(Eigen::Vector2f coords,bool newInTriangle) {
+
+    Point2D(Eigen::Vector2d coords,bool newInTriangle) {
+        
         V = coords; 
+        V(0) = V(0);
+        V(1) = V(1);
+
         inTriangle = newInTriangle; 
         mag = pow(V(0),2) + pow(V(1),2);
     }
+
+   bool operator<(const Point2D& other) const {
+            return V.norm() < other.V.norm();
+        }
+
+    friend std::ostream& operator<<(std::ostream& os, const Point2D& pt);
+
     
-    friend std::ostream& operator <<(std::ostream& os, const Point2D& pt);
+    bool operator==(const Point2D& other) const {return UTIL::compDouble(this->V(0), other.V(0)) && UTIL::compDouble(this->V(1), other.V(1));}
     
-    bool operator==(const Point2D& other) const {return this->V == other.V;}
-    
-    float dist(Point2D other);
+    double dist(Point2D other);
 
 };
 
