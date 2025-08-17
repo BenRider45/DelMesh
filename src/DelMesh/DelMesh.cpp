@@ -187,12 +187,12 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     }
     Point2D meanPoint= this->getMeanPt();
     
-    float DeltaX = MAX_XY.V(0)-MIN_XY.V(0);
-    float DeltaY = MAX_XY.V(1)-MIN_XY.V(1);
-    float maxCircX  = maxX;
-    float minCircX = minX;
-    float maxCircY = maxY;
-    float minCircY = minY;
+    double DeltaX = MAX_XY.V(0)-MIN_XY.V(0);
+    double DeltaY = MAX_XY.V(1)-MIN_XY.V(1);
+    double maxCircX  = maxX;
+    double minCircX = minX;
+    double maxCircY = maxY;
+    double minCircY = minY;
     for(int i=0; i<this->pointList.size()-2; i++){
         for(int j=i+1; j< this->pointList.size()-1; j++){
             for(int k = j+1; k < this->pointList.size(); k++){
@@ -217,22 +217,22 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     // std::cout<<"maxCircY: "<<maxCircY<<"\n";
     // std::cout<<"minCircX: "<<minCircX<<"\n";
     // std::cout<<"minCircY: "<<minCircY<<"\n";
-    float C_supX = (maxCircX + minCircX) /2;
-    float C_supY = (maxCircY + minCircY) /2;
+    double C_supX = (maxCircX + minCircX) /2;
+    double C_supY = (maxCircY + minCircY) /2;
 
     Point2D C_supPoint = Point2D(C_supX,C_supY);
     Point2D maxCIRCXY = Point2D(maxCircX,maxCircY);
 
-    float r_cc = C_supPoint.dist(maxCIRCXY);
-    float r_scc = 2*r_cc;
+    double r_cc = C_supPoint.dist(maxCIRCXY);
+    double r_scc = 2*r_cc;
 
 
-    float A_y = C_supY + r_scc;
+    double A_y = C_supY + r_scc;
     
-    float BC_y = C_supY - r_scc/2;
+    double BC_y = C_supY - r_scc/2;
 
-    float B_x = C_supX + (3.0/2.0)*r_scc*tan(M_PI/6);
-    float C_x = C_supX - (3.0/2.0)*r_scc*tan(M_PI/6);
+    double B_x = C_supX + (3.0/2.0)*r_scc*tan(M_PI/6);
+    double C_x = C_supX - (3.0/2.0)*r_scc*tan(M_PI/6);
 
     // std::cout<<"B_X: "<<B_x<<"\n";
     // std::cout<<"C_X: "<<C_x<<"\n";
@@ -257,7 +257,7 @@ std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Tria
         std::vector<Edge> polygonEdgeList = {};
         for(int j=0;j<Triangulation.size();j++){
             if(Triangulation[j].checkIncircle(pointList[i])){
-                std::cout<<"Bad Triangle";
+                std::cout<<"Bad Triangle\n";
                 //Remove from triangulationd
                 //Store edges of triangle
                 badTriangleList.push_back(Triangulation[j]);
@@ -265,9 +265,9 @@ std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Tria
             }
 
             std::cout<<"Got to Triangulation loop\n";
-        }
-
-    
+        }  
+        
+        
         std::cout<<"got out of Triangulation loop\n";
         //Getting Convex hull of new hole in mesh
         for(Triangle badTriangle : badTriangleList){

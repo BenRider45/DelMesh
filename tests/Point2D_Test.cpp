@@ -23,5 +23,25 @@ TEST(Point2D, coordinate_assignment_test){
     ASSERT_EQ(y,a.V(1));
 }   
 
+TEST(Point2D, obj_equality_test){
+    double x1 = 10.0;
+    double y1 = 10.0;
 
+    double x2 = 10.0;
+    double y2 = 10.0;
+
+    double x3 = 12.0;
+    double y3 = 15.0;
+
+    Point2D a(x1,y1);
+    Point2D b(x2,y2);
+    
+    ASSERT_EQ(a,b);
+
+    Point2D c(x3,y3);
+
+    ASSERT_NE(a,c);
+
+
+}
 

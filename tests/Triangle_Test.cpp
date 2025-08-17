@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "DelMesh/Triangle.hpp"
 #include "DelMesh/Point2D.hpp"
+
 using std::cout;
 
 
@@ -15,19 +16,22 @@ TEST(Triangle, object_creation_test){
 
 TEST(Triangle, circumcircle_calculation_test){
 
-    Point2D a = Point2D(-10,0);
-    Point2D b = Point2D(0,10);
-    Point2D c = Point2D(0, (sqrt(3)/2.0)*10);
+    Point2D a = Point2D(-15.0,5.0);
+    Point2D b = Point2D(15.0,0.0);
+    Point2D c = Point2D(0.0, 10.0);
 
     Triangle t = Triangle(a,b,c);
 
-    Point2D CALCULATED_CC_CENTER = Point2D(0,-1.44337567297);
+    Point2D CALCULATED_CC_CENTER = Point2D(-1.9444444444444444, -9.166666666666666);
 
-    double CALCULATED_CC_RADIUS = 10.1036297108;
+    double CALCULATED_CC_RADIUS = 19.265045427110778;
 
+
+    ASSERT_EQ(CALCULATED_CC_CENTER.V(0),t.circle.center.V(0));
+    ASSERT_DOUBLE_EQ(CALCULATED_CC_CENTER.V(1),t.circle.center.V(1));
 
     ASSERT_EQ(CALCULATED_CC_CENTER,t.circle.center);
-    ASSERT_DOUBLE_EQ(CALCULATED_CC_RADIUS,t.circle.radius);
+    ASSERT_EQ(CALCULATED_CC_RADIUS,t.circle.radius);
 
 
 }
@@ -50,13 +54,13 @@ TEST(Triangle, correct_wrong_orientation_test){
     Point2D a = Point2D(-10,0);
     Point2D c = Point2D(10,0);
     Point2D b = Point2D(0, (sqrt(3)/2.0)*10);
-
+ 
     Triangle t = Triangle(a,b,c); //These Points are in an incorrect orientation (c is to the left of directed line ab)
 
     ASSERT_NE(b,t.b);
     ASSERT_NE(c,t.c); //Points B and C should be swapped Now
 
-    ASSERT_EQ(b,t.c);
+    ASSERT_EQ(b,t.c);   
     ASSERT_EQ(c,t.b);
 
 }
