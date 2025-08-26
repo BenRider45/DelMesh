@@ -23,6 +23,7 @@ public:
     double maxX,maxY,minX,minY;
     
     std::vector<Triangle> BowyerWatson(std::vector<Point2D> pointList,Triangle SuperTriang);//calculation of triangluation mesh
+    std::vector<Triangle> BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation);
     void WriteConnecArray(); //writing connectivity array into textfile
     std::vector<Point2D> readPointListFromFile(std::string filePath);//Reading points from text file
     std::string generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName);//Generate a n-length list of random 2D points under the given bounds for x and y, stores in textfile. Option to inclufe seed for reproducibility

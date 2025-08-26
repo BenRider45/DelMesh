@@ -71,7 +71,7 @@ Circle Triangle::computeCircumcircle(){
     double CircleRadius = sqrt(pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2));
     Circle output = Circle(CirclePoint,CircleRadius);
 
-    if(CircleRadius == NULL){
+    if(!CircleRadius ){
         std::cout<<"Circle Radius Null: " << CircleRadius<<"\n"; 
     }
 

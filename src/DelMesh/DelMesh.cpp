@@ -13,6 +13,7 @@
 #include <filesystem>
 #include <string>
 #include "Eigen/Dense"
+
 DelMesh::DelMesh(){
     this->connecArray = std::vector<Triangle>();
     this->pointList = std::vector<Point2D>();
@@ -248,61 +249,73 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     
 }
 
+//Maybe adding an Insert Point function to use as a helper later on/make algorithm more modular?
+
+std::vector<Triangle> DelMesh::BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation){
+
+
+    std::vector<Triangle> badTriangleList = {};
+            std::vector<Edge> polygonEdgeList = {};
+            for(int j=0;j<Triangulation.size();j++){
+                if(Triangulation.at(j).checkIncircle(point)){
+                    std::cout<<"Bad Triangle\n";
+                //Remove from triangulationd
+                //Store edges of triangle
+                    badTriangleList.push_back(Triangulation.at(j));
+                //Remove Bad Triangle From List
+                }
+
+                std::cout<<"Got to Triangulation loop\n";
+            }  
+        
+        
+            std::cout<<"got out of Triangulation loop\n";
+            //Getting Convex hull of new hole in mesh
+            for(Triangle badTriangle : badTriangleList){
+                std::cout<<"Got to badTriangleList loop\n";
+                
+                for(int k=0; k<3; k++){
+                    
+                    std::cout<<"Got to Triangle Edge Loop\n";
+
+                    int times_seen = 0;
+                    if(polygonEdgeList.size()==0){
+                        polygonEdgeList.push_back(badTriangle.Edges[k]);                
+
+
+                    }else{
+                        for(Edge polyEdge : polygonEdgeList){
+                            
+                            if(badTriangle.Edges[k]== polyEdge){
+                                times_seen ++;
+                                std::cout<<"Seen!";
+                            }
+                            std::cout<<"Polygon edge List loop\n";
+                            if(times_seen ==1){
+                                polygonEdgeList.push_back(badTriangle.Edges[k]);                
+                            }
+                            
+                        }
+                    }   
+                    
+                    
+                }
+                
+            }
+
+            for(int j=0; j<polygonEdgeList.size();j++){
+                Triangle T = Triangle(point,polygonEdgeList[j].a,polygonEdgeList[j].b);
+                Triangulation.emplace_back(T);
+            }
+
+
+}
+
 
 std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Triangle SuperTriag){  
     std::vector<Triangle> Triangulation = {SuperTriag}; 
     for(int i=0; i<pointList.size(); i++){
-        //Hash Map for coordinate lookup potentially (radially based using eucidian distance from origin?)
-        std::vector<Triangle> badTriangleList = {};
-        std::vector<Edge> polygonEdgeList = {};
-        for(int j=0;j<Triangulation.size();j++){
-            if(Triangulation[j].checkIncircle(pointList[i])){
-                std::cout<<"Bad Triangle\n";
-                //Remove from triangulationd
-                //Store edges of triangle
-                badTriangleList.push_back(Triangulation[j]);
-                //Remove Bad Triangle From List
-            }
-
-            std::cout<<"Got to Triangulation loop\n";
-        }  
-        
-        
-        std::cout<<"got out of Triangulation loop\n";
-        //Getting Convex hull of new hole in mesh
-        for(Triangle badTriangle : badTriangleList){
-            std::cout<<"Got to badTriangleList loop\n";
-            
-            for(int k=0; k<3; k++){
-                
-                std::cout<<"Got to Triangle Edge Loop\n";
-                int times_seen = 0;
-                for(Edge polyEdge : polygonEdgeList){
-                    
-                    if(badTriangle.Edges[k]== polyEdge){
-                        times_seen ++;
-                        std::cout<<"Seen!";
-                    }
-                    std::cout<<"Polygon edge List loop\n";
-                    if(times_seen ==1){
-                        polygonEdgeList.push_back(badTriangle.Edges[k]);                
-                    }
-                    
-                }
-                
-                
-            }
-            
-        }
-
-        for(int j=0; j<polygonEdgeList.size();j++){
-            Triangle T = Triangle(pointList[i],polygonEdgeList[j].a,polygonEdgeList[j].b);
-            Triangulation.emplace_back();
-        }
-
-
-
-
+        DelMesh::BW_Insert_Pt(pointList.at(i),Triangulation);
     }
 
 }

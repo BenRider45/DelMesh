@@ -14,9 +14,13 @@ file(GLOB_RECURSE LIB_HEADERS "src/DelMesh/*.h" "src/DelMesh*.hpp")
 
 list(FILTER LIB_SOURCES EXCLUDE REGEX ".*main\\.cpp$")
 
+
+
+
 # Creating Library Target
 add_library(DelMesh ${LIB_SOURCES} ${LIB_HEADERS})
 
+target_compile_options(DelMesh  PUBLIC -Wno-deprecated-copy)
 
 #Compiling main if exists
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
