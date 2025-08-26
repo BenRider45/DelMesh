@@ -40,7 +40,6 @@ class Triangle:
         self.AB = LINE(a,b)
         self.BC = LINE(b,c)
         self.CA = LINE(c,a)
-    
 def main():
 
     A = point2D(-15.0,5.0)

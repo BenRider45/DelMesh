@@ -249,6 +249,20 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     
 }
 
+std::string DelMesh::ExportConnecArray(std::string fileName, std::vector<Triangle> triangulation){
+    std::fstream outFile;
+    outFile.open(fileName,std::ios::out);
+
+    if(outFile.is_open()){
+        for ( auto triangle : triangulation){
+            outFile << triangle << "\n";
+
+        }
+
+        outFile.close();
+    }
+
+}
 //Maybe adding an Insert Point function to use as a helper later on/make algorithm more modular?
 
 std::vector<Triangle> DelMesh::BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation){
