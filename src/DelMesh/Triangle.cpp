@@ -17,11 +17,11 @@ Circle Triangle::computeCircumcircle(){
     //This loop ensures we will never choose a side with a slope of 0.
     
     for(int i=0; i<3; i++){
-        std::cout << "this->Edges.at(i).slope:" << this->Edges.at(i).slope << "\n";
-        std::cout << "this->Edges.at(i).SLOPE_ZERO: " << this->Edges.at(i).SLOPE_ZERO << "\n"; 
+        //std::cout << "this->Edges.at(i).slope:" << this->Edges.at(i).slope << "\n";
+       // std::cout << "this->Edges.at(i).SLOPE_ZERO: " << this->Edges.at(i).SLOPE_ZERO << "\n"; 
         if(this->Edges.at(i).SLOPE_ZERO){
             
-            std::cout <<"index i: "<< i << "\n";
+            ////std::cout <<"index i: "<< i << "\n";
             A_idx = i-1;
             B_idx = i+1;
             if(A_idx == -1){A_idx = 2; }
@@ -31,15 +31,15 @@ Circle Triangle::computeCircumcircle(){
         }
         
     }
-    std::cout << "A_idx: "<< A_idx << "\n";
-    std::cout << "B_idx: "<< B_idx << "\n";
+    ////std::cout << "A_idx: "<< A_idx << "\n";
+    ////std::cout << "B_idx: "<< B_idx << "\n";
 
-    std::cout << "============\n";
+    ////std::cout << "============\n";
 
 
 
     Edge A = this->Edges.at(A_idx);
-    std::cout << "Edge at A_idx: " << A << '\n'; 
+    //std::cout << "Edge at A_idx: " << A << '\n'; 
 
     double A_perpM;
     if(A.SLOPE_INF){
@@ -50,7 +50,7 @@ Circle Triangle::computeCircumcircle(){
 
     
     Edge B = this->Edges.at(B_idx);
-    std::cout << "Edge at B_idx: " << B << '\n'; 
+    //std::cout << "Edge at B_idx: " << B << '\n'; 
 
     double B_perpM;
     if(B.SLOPE_INF){

@@ -30,6 +30,7 @@ int main(int argc, const char * argv[]) {
 
     std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),10,10,"../PointFiles/TestPointFil4e.txt");
     
+     
     Mesh.pointList = Mesh.readPointListFromFile(pointFPath);
     Mesh.pointList = Mesh.radialSort(Mesh.pointList);
 
@@ -59,7 +60,7 @@ int main(int argc, const char * argv[]) {
     
 
 
-    double roundedTest = 1.444444445;
+    //double roundedTest = 1.444444445;
     // std::cout<<"Tetst";
     // std::cout<<"round(test): "<<std::setprecision(std::numeric_limits<long double>::digits10) << UTIL::round(test,4)<< "\n";
 
@@ -75,20 +76,23 @@ int main(int argc, const char * argv[]) {
 
     Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
     std::cout<< supTriang;
+    std::vector<Triangle> triang;
+    triang.push_back(supTriang);
+    std::cout<<supTriang;
+    
+    for(Point2D pt: Mesh.pointList){
+        Mesh.BW_Insert_Pt(pt, triang);
 
-    Mesh.findMaxMin();
-    std::sort(Mesh.pointList.begin(), Mesh.pointList.end());
-    std::cout<< "sorted Pointlist: \n";
-    for(Point2D pnt : Mesh.pointList){
-        std::cout <<pnt<<"\n";
-    }    
-
-
-
-
-
-
-    std::system("python3 ../src/computations.py");
+    }
+   
+    std::ostringstream ss;
+    ss << "python3 ../src/computations.py " << "\"";
+    for (Triangle t : triang){
+        ss << t<< "\n";
+    }
+    ss <<"\"";
+    std::string call = ss.str();
+    std::system(call.c_str());
     //std::vector<Triangle> m = Mesh.BowyerWatson(Mesh.pointList,supTriang);
 
 

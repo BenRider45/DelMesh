@@ -46,15 +46,19 @@ public:
         // CA = Edge(c,a);
         // Edges.push_back(CA);
         if(correctOrient() == -1){
-            std::cout<<"Points given in clockwise order\n";
+           // std::cout<<"Points given in clockwise order\n";
+        }else{
+            //std::cout<<"Not clickwise order\n";
+
         }
+
 
         this->AB = Edge(this->a,this->b);
         this->BC = Edge(this->b,this->c);
         this->CA = Edge(this->c,this->a);
-        std::cout << "AB: " << AB << "\n";
-        std::cout << "BC: " << BC << "\n";
-        std::cout << "CA: " << CA << "\n";
+        //std::cout << "AB: " << AB << "\n";
+        //std::cout << "BC: " << BC << "\n";
+        //std::cout << "CA: " << CA << "\n";
 
         //std::cout<<"Triangle Constructor"<< a;
         area = computeArea();//Computing Area via shoelace
@@ -72,13 +76,24 @@ public:
     Circle computeCircumcircle();
     
     friend std::ostream& operator <<(std::ostream& os, const Triangle& triag){
-        os << "Triangle: \n" << "AB: " << triag.AB << "-> BC : " << triag.BC << "-> CA: " << triag.CA
-        << "\n CircumCircle: \n"<<triag.circle;
+        os << triag.a << "->" << triag.b << "->" << triag.c;
+        // os << "Triangle: \n" << "AB: " << triag.AB << "-> BC : " << triag.BC << "-> CA: " << triag.CA
+        // << "\n CircumCircle: \n"<<triag.circle;
         return os;
     } 
     
+    bool operator==(const Triangle& other) const {
+        return other.Edges == this->Edges;
+    }
 
 
+
+    template <typename T>
+    std::string to_string( const T& value ){
+        std::ostringstream ss;
+        ss << value;
+        return ss.str();
+    }
         
     
 

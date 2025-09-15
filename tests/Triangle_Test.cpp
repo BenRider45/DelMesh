@@ -14,6 +14,22 @@ TEST(Triangle, object_creation_test){
     EXPECT_NO_FATAL_FAILURE(cout<<t);
 }
 
+TEST (Triangle, equality_test){
+    
+    Point2D a = Point2D(-15.0,5.0);
+    Point2D b = Point2D(15.0,0.0);
+    Point2D c = Point2D(0.0, 10.0);
+
+    Point2D a2 = Point2D(-15.0,5.0);
+    Point2D b2 = Point2D(15.0,0.0);
+    Point2D c2 = Point2D(0.0, 10.0);
+
+    Triangle t(a,b,c);
+    Triangle t2(a,b,c);
+
+    ASSERT_EQ(t,t2);
+
+}
 TEST(Triangle, circumcircle_calculation_test){
 
     Point2D a = Point2D(-15.0,5.0);

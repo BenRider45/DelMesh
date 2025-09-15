@@ -28,7 +28,7 @@ public:
         Box.XY_MAX.V(1) = init_center.V(1) + init_radius;
         Box.XY_MIN.V(1) = init_center.V(1) - init_radius;
 
-        std::cout<<"Min X:"<<Box.XY_MIN.V(0)<<"\n";
+    //    std::cout<<"Min X:"<<Box.XY_MIN.V(0)<<"\n";
     };
 
     friend std::ostream& operator <<(std::ostream& os, const Circle& circ){
