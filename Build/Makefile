@@ -341,6 +341,30 @@ src/DelMesh/Point2D.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.s
 .PHONY : src/DelMesh/Point2D.cpp.s
 
+src/DelMesh/Render.o: src/DelMesh/Render.cpp.o
+.PHONY : src/DelMesh/Render.o
+
+# target to build an object file
+src/DelMesh/Render.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Render.cpp.o
+.PHONY : src/DelMesh/Render.cpp.o
+
+src/DelMesh/Render.i: src/DelMesh/Render.cpp.i
+.PHONY : src/DelMesh/Render.i
+
+# target to preprocess a source file
+src/DelMesh/Render.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Render.cpp.i
+.PHONY : src/DelMesh/Render.cpp.i
+
+src/DelMesh/Render.s: src/DelMesh/Render.cpp.s
+.PHONY : src/DelMesh/Render.s
+
+# target to generate assembly for a file
+src/DelMesh/Render.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Render.cpp.s
+.PHONY : src/DelMesh/Render.cpp.s
+
 src/DelMesh/Triangle.o: src/DelMesh/Triangle.cpp.o
 .PHONY : src/DelMesh/Triangle.o
 
@@ -443,6 +467,9 @@ help:
 	@echo "... src/DelMesh/Point2D.o"
 	@echo "... src/DelMesh/Point2D.i"
 	@echo "... src/DelMesh/Point2D.s"
+	@echo "... src/DelMesh/Render.o"
+	@echo "... src/DelMesh/Render.i"
+	@echo "... src/DelMesh/Render.s"
 	@echo "... src/DelMesh/Triangle.o"
 	@echo "... src/DelMesh/Triangle.i"
 	@echo "... src/DelMesh/Triangle.s"

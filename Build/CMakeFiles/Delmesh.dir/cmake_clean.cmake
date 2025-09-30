@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/DelMesh.dir/src/DelMesh/Edge.cpp.o.d"
   "CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o"
   "CMakeFiles/DelMesh.dir/src/DelMesh/Point2D.cpp.o.d"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Render.cpp.o"
+  "CMakeFiles/DelMesh.dir/src/DelMesh/Render.cpp.o.d"
   "CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o"
   "CMakeFiles/DelMesh.dir/src/DelMesh/Triangle.cpp.o.d"
   "CMakeFiles/DelMesh.dir/src/DelMesh/UTIL.cpp.o"
