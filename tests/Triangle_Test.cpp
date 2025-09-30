@@ -6,9 +6,9 @@ using std::cout;
 
 
 TEST(Triangle, object_creation_test){
-    Point2D a = Point2D(-10,0);
-    Point2D b = Point2D(0,10);
-    Point2D c = Point2D(0, (sqrt(3)/2.0)*10);
+    Point2D a = Point2D(-10,0,-1);
+    Point2D b = Point2D(0,10,-1);
+    Point2D c = Point2D(0, (sqrt(3)/2.0)*10,-1);
 
     Triangle t = Triangle(a,b,c);
     EXPECT_NO_FATAL_FAILURE(cout<<t);
@@ -16,13 +16,13 @@ TEST(Triangle, object_creation_test){
 
 TEST (Triangle, equality_test){
     
-    Point2D a = Point2D(-15.0,5.0);
-    Point2D b = Point2D(15.0,0.0);
-    Point2D c = Point2D(0.0, 10.0);
+    Point2D a = Point2D(-15.0,5.0,-1);
+    Point2D b = Point2D(15.0,0.0,-1);
+    Point2D c = Point2D(0.0, 10.0,-1);
 
-    Point2D a2 = Point2D(-15.0,5.0);
-    Point2D b2 = Point2D(15.0,0.0);
-    Point2D c2 = Point2D(0.0, 10.0);
+    Point2D a2 = Point2D(-15.0,5.0,-1);
+    Point2D b2 = Point2D(15.0,0.0,-1);
+    Point2D c2 = Point2D(0.0, 10.0,-1);
 
     Triangle t(a,b,c);
     Triangle t2(a,b,c);
@@ -32,13 +32,13 @@ TEST (Triangle, equality_test){
 }
 TEST(Triangle, circumcircle_calculation_test){
 
-    Point2D a = Point2D(-15.0,5.0);
-    Point2D b = Point2D(15.0,0.0);
-    Point2D c = Point2D(0.0, 10.0);
+    Point2D a = Point2D(-15.0,5.0,-1);
+    Point2D b = Point2D(15.0,0.0,-1);
+    Point2D c = Point2D(0.0, 10.0,-1);
 
     Triangle t = Triangle(a,b,c);
 
-    Point2D CALCULATED_CC_CENTER = Point2D(-1.9444444444444444, -9.166666666666666);
+    Point2D CALCULATED_CC_CENTER = Point2D(-1.9444444444444444, -9.166666666666666,-1);
 
     double CALCULATED_CC_RADIUS = 19.265045427110778;
 
@@ -53,23 +53,23 @@ TEST(Triangle, circumcircle_calculation_test){
 }
 
 TEST(Triangle, in_circle_test){
-    Point2D a = Point2D(-10,0);
-    Point2D b = Point2D(10,0);
-    Point2D c = Point2D(0, sqrt(3)*10);
+    Point2D a = Point2D(-10,0,-1);
+    Point2D b = Point2D(10,0,-1);
+    Point2D c = Point2D(0, sqrt(3)*10,-1);
 
-    Point2D d = Point2D(0,5); //Point that is inside this triangles circumcircle
+    Point2D d = Point2D(0,5,-1); //Point that is inside this triangles circumcircle
     Triangle t = Triangle(a,b,c);
     ASSERT_TRUE(t.checkIncircle(d));
 
-    Point2D e = Point2D(123456,12345678); //Point that is definitely outside this triangles circumcircle
+    Point2D e = Point2D(123456,12345678,-1); //Point that is definitely outside this triangles circumcircle
     ASSERT_FALSE(t.checkIncircle(e));
 
 }
 
 TEST(Triangle, correct_wrong_orientation_test){
-    Point2D a = Point2D(-10,0);
-    Point2D c = Point2D(10,0);
-    Point2D b = Point2D(0, (sqrt(3)/2.0)*10);
+    Point2D a = Point2D(-10,0,-1);
+    Point2D c = Point2D(10,0,-1);
+    Point2D b = Point2D(0, (sqrt(3)/2.0)*10,-1);
  
     Triangle t = Triangle(a,b,c); //These Points are in an incorrect orientation (c is to the left of directed line ab)
 
@@ -82,9 +82,9 @@ TEST(Triangle, correct_wrong_orientation_test){
 }
 
 TEST(Triangle, dont_correct_right_orientation_test){
-    Point2D a = Point2D(-10,0);
-    Point2D b = Point2D(10,0);
-    Point2D c = Point2D(0, (sqrt(3)/2.0)*10);
+    Point2D a = Point2D(-10,0,-1);
+    Point2D b = Point2D(10,0,-1);
+    Point2D c = Point2D(0, (sqrt(3)/2.0)*10,-1);
 
     Triangle t = Triangle(a,b,c); //These Points are in an incorrect orientation (c is to the left of directed line ab)
 
@@ -98,9 +98,9 @@ TEST(Triangle, dont_correct_right_orientation_test){
 }
 
 TEST(Triangle, area_calc_test){
-    Point2D a = Point2D(-10,0);
-    Point2D b = Point2D(10,0);
-    Point2D c = Point2D(0, (sqrt(3))*10);
+    Point2D a = Point2D(-10,0,-1);
+    Point2D b = Point2D(10,0,-1);
+    Point2D c = Point2D(0, (sqrt(3))*10,-1);
     Triangle t = Triangle(a,b,c);
 
     double TEST_TRIANGLE_AREA = .5 * ((a.V(0)*b.V(1) + b.V(0)*c.V(1)+ c.V(0)*a.V(1)) - (a.V(1)*b.V(0)+b.V(1)*c.V(0)+c.V(1)*a.V(0)));

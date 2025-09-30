@@ -23,6 +23,8 @@ public:
     bool inTriangle;
    
     double mag;
+
+    int idx; //Index of point in respective pointList
     //1
     
 //    If the slope is zero, you know the 𝑦
@@ -35,7 +37,7 @@ public:
 //     in the line bisecting the segment between the third point
 //     and one of the two you have used.
     
-    Point2D(Eigen::Vector2d init_coordinates)  {
+    Point2D(Eigen::Vector2d init_coordinates,int idx) : idx(idx)  {
 
 
         init_coordinates(0) = init_coordinates(0);
@@ -45,8 +47,8 @@ public:
         inTriangle = false;
     };
 
-    Point2D() {};
-    Point2D(double x, double y) : inTriangle(false) {
+    Point2D()= default;
+    Point2D(double x, double y, int idx) : inTriangle(false), idx(idx){
         //Processing coords
         V = Eigen::Vector2d(x,y);
 
@@ -54,7 +56,7 @@ public:
         inTriangle = false;
     };
 
-    Point2D(Eigen::Vector2d coords,bool newInTriangle) {
+    Point2D(Eigen::Vector2d coords,bool newInTriangle,int idx): idx(idx) {
         
         V = coords; 
         V(0) = V(0);

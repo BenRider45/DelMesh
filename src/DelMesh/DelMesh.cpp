@@ -102,7 +102,7 @@ std::vector<Point2D> DelMesh::readPointListFromFile(std::string filePath){
                 if (line[i] == ','){
                     double tempX= stof(line.substr(0,i));
                     double tempY= stof( line.substr(i+1,line.size()-1));
-                    Point2D tempPoint = Point2D(tempX,tempY);
+                    Point2D tempPoint = Point2D(tempX,tempY,n);
                     //std::cout<<tempPoint;
                     Output.push_back(tempPoint);
                     
@@ -195,7 +195,7 @@ Point2D DelMesh::getMeanPt(){
         yMean += pointList[i].V(1);
     }
     
-    Point2D output = Point2D(xMean/this->pointList.size(), yMean/this->pointList.size());
+    Point2D output = Point2D(xMean/this->pointList.size(), yMean/this->pointList.size(),-1);
         
         
     
@@ -205,7 +205,7 @@ Point2D DelMesh::getMeanPt(){
 
 Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     if(this->pointList.size()==0){
-        return Triangle(Point2D(0, 0),Point2D(0, 0),Point2D(0, 0));
+        return Triangle(Point2D(0, 0,0),Point2D(0, 0,1),Point2D(0, 0,2));
     }
     Point2D meanPoint= this->getMeanPt();
     
@@ -242,8 +242,8 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     double C_supX = (maxCircX + minCircX) /2;
     double C_supY = (maxCircY + minCircY) /2;
 
-    Point2D C_supPoint = Point2D(C_supX,C_supY);
-    Point2D maxCIRCXY = Point2D(maxCircX,maxCircY);
+    Point2D C_supPoint = Point2D(C_supX,C_supY,-1);
+    Point2D maxCIRCXY = Point2D(maxCircX,maxCircY,-1);
 
     double r_cc = C_supPoint.dist(maxCIRCXY);
     double r_scc = 2*r_cc;
@@ -259,10 +259,10 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     // std::cout<<"B_X: "<<B_x<<"\n";
     // std::cout<<"C_X: "<<C_x<<"\n";
     // std::cout<<"Tan: "<<tan(M_PI/6);
-    Point2D A = Point2D(C_supX, A_y);
+    Point2D A = Point2D(C_supX, A_y,-1);
 
-    Point2D B = Point2D(B_x, BC_y);
-    Point2D C = Point2D(C_x, BC_y);
+    Point2D B = Point2D(B_x, BC_y,-2);
+    Point2D C = Point2D(C_x, BC_y,-3);
 
     Triangle output = Triangle(A, B, C);
     //std::cout<<"========At SuperTriangReturn========\n";

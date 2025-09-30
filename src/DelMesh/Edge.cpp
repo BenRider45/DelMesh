@@ -12,7 +12,7 @@ Point2D Edge::computeMidpoint(){
     double midX = (this->a.V(0) + this->b.V(0))/2;
     double midY = (this->a.V(1) + this->b.V(1))/2;
     
-    return Point2D(midX,midY);
+    return Point2D(midX,midY,-1);
     
     
 }

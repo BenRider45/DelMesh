@@ -67,7 +67,7 @@ Circle Triangle::computeCircumcircle(){
         
     double CircCenter_X =  X_Num / denom;
     double CircCenter_Y = (Y_Num /denom) + Y_Res;
-    Point2D CirclePoint = Point2D(CircCenter_X,CircCenter_Y);
+    Point2D CirclePoint = Point2D(CircCenter_X,CircCenter_Y,-1);
     double CircleRadius = sqrt(pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2));
     Circle output = Circle(CirclePoint,CircleRadius);
 

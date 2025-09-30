@@ -18,11 +18,11 @@
 int main(int argc, const char * argv[]) {
 
 
-    Point2D testPoint = Point2D(3.4214,2.6667543);
+    Point2D testPoint = Point2D(3.4214,2.6667543,-1);
     
     DelMesh Mesh = DelMesh();
-    Point2D MAX_XY = Point2D(10, 10);
-    Point2D MIN_XY = Point2D(-10,-10);
+    Point2D MAX_XY = Point2D(10, 10,-1);
+    Point2D MIN_XY = Point2D(-10,-10,-1);
    // std::string fPath =  + "/Delauney Mesh\s Generation/External";
 
    //TESTING SEED
@@ -75,25 +75,25 @@ int main(int argc, const char * argv[]) {
     //std::cout<<"outTriangle checkIncircle:"<<t.checkIncircle(outTriangle)<<"\n";
 
     Triangle supTriang = Mesh.getSuperTriang(MAX_XY,MIN_XY);
-    std::cout<< supTriang;
+    //std::cout<< supTriang;
     std::vector<Triangle> triang;
     triang.push_back(supTriang);
     std::cout<<supTriang;
     
-    for(Point2D pt: Mesh.pointList){
-        Mesh.BW_Insert_Pt(pt, triang);
+    // for(Point2D pt: Mesh.pointList){
+    //     Mesh.BW_Insert_Pt(pt, triang);
 
-    }
+    // }
    
-    std::ostringstream ss;
-    ss << "python3 ../src/computations.py " << "\"";
-    for (Triangle t : triang){
-        ss << t<< "\n";
-    }
-    ss <<"\"";
-    std::string call = ss.str();
-    std::system(call.c_str());
-    //std::vector<Triangle> m = Mesh.BowyerWatson(Mesh.pointList,supTriang);
+    // std::ostringstream ss;
+    // ss << "python3 ../src/computations.py " << "\"";
+    // for (Triangle t : triang){
+    //     ss << t<< "\n";
+    // }
+    // ss <<"\"";
+    // std::string call = ss.str();
+    // std::system(call.c_str());
+    // //std::vector<Triangle> m = Mesh.BowyerWatson(Mesh.pointList,supTriang);
 
 
 

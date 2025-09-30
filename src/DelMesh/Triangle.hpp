@@ -76,10 +76,10 @@ public:
     Circle computeCircumcircle();
     
     friend std::ostream& operator <<(std::ostream& os, const Triangle& triag){
-        os << triag.a << "->" << triag.b << "->" << triag.c;
+        os << triag.a.idx << ">" << triag.b.idx << ">" << triag.c.idx;
         // os << "Triangle: \n" << "AB: " << triag.AB << "-> BC : " << triag.BC << "-> CA: " << triag.CA
         // << "\n CircumCircle: \n"<<triag.circle;
-        return os;
+        return os; 
     } 
     
     bool operator==(const Triangle& other) const {
