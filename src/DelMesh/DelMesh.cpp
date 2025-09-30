@@ -380,6 +380,7 @@ void DelMesh::BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation)
 }
 
 
+
 std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Triangle SuperTriag){  
     std::vector<Triangle> Triangulation = {SuperTriag}; 
     for(int i=0; i<pointList.size(); i++){
