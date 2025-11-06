@@ -115,3 +115,12 @@ int Triangle::correctOrient(){
     return 1;
 
 }
+
+bool Triangle::isEdgeInTriangle(Edge e){
+    for(Edge edge: this->Edges){
+        if (edge == e){
+            return true;
+        }
+    }
+    return false; 
+}

@@ -29,7 +29,7 @@ public:
     Circle circle;
     double area;
     double perim;
-
+    bool HAS_SUPERTRIANGLE_POINT;
 
     Triangle() {};
     Triangle(Point2D a, Point2D b, Point2D c) {
@@ -37,7 +37,7 @@ public:
         this->a = a;
         this->b = b;
         this->c = c;
-
+        this->HAS_SUPERTRIANGLE_POINT = (a.idx <0 || b.idx <0 || c.idx <0);
         // AB = Edge(a,b);
         // //std::cout<<AB<<"\n";
         // Edges.push_back(AB);
@@ -72,12 +72,13 @@ public:
     
     int checkOrient(); //returns 1 if oriented correctly, returns -1 if not oriented correctly, and 0 if points are colinear
     int correctOrient(); // returns 1 if points did not need correction, -1 if points were corrected
+    bool isEdgeInTriangle(Edge e);
     bool checkIncircle(Point2D d);//
     Circle computeCircumcircle();
     
     friend std::ostream& operator <<(std::ostream& os, const Triangle& triag){
-        os << triag.a.idx << ">" << triag.b.idx << ">" << triag.c.idx;
-        // os << "Triangle: \n" << "AB: " << triag.AB << "-> BC : " << triag.BC << "-> CA: " << triag.CA
+        os << triag.a << "->" << triag.b << "->" << triag.c;
+        //os << "Triangle: \n" << "AB: " << triag.AB << "-> BC : " << triag.BC << "-> CA: " << triag.CA;
         // << "\n CircumCircle: \n"<<triag.circle;
         return os; 
     } 
@@ -95,6 +96,5 @@ public:
         return ss.str();
     }
         
-    
 
 };

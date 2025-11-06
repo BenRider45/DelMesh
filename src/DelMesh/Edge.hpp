@@ -39,12 +39,12 @@ public:
     };
 
     bool operator==(const Edge& other) const{
-        return a.V == other.a.V && b.V == other.b.V;
+        return (a.V == other.a.V && b.V == other.b.V) || (a.V == other.b.V && b.V == other.a.V);
         
     };
     
     friend std::ostream& operator <<(std::ostream& os, const Edge& edg){
-        os << "Edge: " << edg.a << "->" << edg.b <<"\n";
+        os << edg.a << "," << edg.b <<"\n";
         return os;
     }    
 };

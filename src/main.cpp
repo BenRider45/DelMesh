@@ -28,16 +28,16 @@ int main(int argc, const char * argv[]) {
    //TESTING SEED
    //std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),4,100,"../PointFiles/TestPointFil3e.txt");
 
-    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),10,10,"../PointFiles/TestPointFil4e.txt");
+    std::string pointFPath = Mesh.generateRandPtLst(MIN_XY.V(0),MAX_XY.V(0),MIN_XY.V(1),MAX_XY.V(1),40,10,"../PointFiles/TestPointFil4e.txt");
     
      
     Mesh.pointList = Mesh.readPointListFromFile(pointFPath);
     Mesh.pointList = Mesh.radialSort(Mesh.pointList);
 
-    for(int i=0; i<Mesh.pointList.size(); i++){
-        std::cout<<Mesh.pointList[i]<<"\n";
+    // for(int i=0; i<Mesh.pointList.size(); i++){
+    //     std::cout<<Mesh.pointList[i]<<"\n";
 
-    }
+    // }
     // Point2D a = Point2D(-10,0);
     // Point2D b = Point2D(10,0);
     // Point2D c = Point2D(0,20);
@@ -80,11 +80,12 @@ int main(int argc, const char * argv[]) {
     triang.push_back(supTriang);
     std::cout<<supTriang;
     
-    // for(Point2D pt: Mesh.pointList){
-    //     Mesh.BW_Insert_Pt(pt, triang);
+    for(Point2D p: Mesh.pointList){
+        Mesh.BW_Insert_Pt(p, triang);
+    }
 
-    // }
-   
+    Mesh.ExportConnecArray("../PointFiles/TestConnecArraay.txt",triang);
+    
     // std::ostringstream ss;
     // ss << "python3 ../src/computations.py " << "\"";
     // for (Triangle t : triang){
