@@ -122,20 +122,12 @@ std::vector<Point2D> DelMesh::readPointListFromFile(std::string filePath){
                     Point2D tempPoint = Point2D(tempX,tempY,n);
                     //std::cout<<tempPoint;
                     Output.push_back(tempPoint);
-                    
-                    
                 }
-                
             }
             n++;
-            
         }
-        
-        
     }
-    std::cout << "Output Vector Length: " << Output.size()<< "\n";
     return Output;  
-    
 }
 
 std::vector<Point2D> DelMesh::radialSort(std::vector<Point2D> pntLst){
@@ -145,62 +137,19 @@ std::vector<Point2D> DelMesh::radialSort(std::vector<Point2D> pntLst){
 }
 
 
-void DelMesh::findMaxMin(){
-    //Use std::minmaxElement
-    
-    //Start Sorting radially now! 
-    
-    
-    std::pair<std::vector<Point2D>::iterator, std::vector<Point2D>::iterator> mnmx;
+std::vector<Point2D> DelMesh::findMaxMin(std::vector<Point2D> pointList){
+  Point2D minPt = pointList.at(0);
+  Point2D maxPt = pointList.at(1);
+  for(auto pt : pointList){
+    minPt.V(0) = minPt.V(0) > pt.V(0) ? pt.V(0) : minPt.V(0);
+    minPt.V(1) = minPt.V(1) > pt.V(1) ? pt.V(1) : minPt.V(1);
 
-    mnmx = std::minmax_element(pointList.begin(), pointList.end());
+    maxPt.V(0) = maxPt.V(0) < pt.V(0) ? pt.V(0) : maxPt.V(0);
+    maxPt.V(1) = maxPt.V(1) < pt.V(1) ? pt.V(1) : maxPt.V(1);
 
-   std::cout << "\nThe minimum value position obtained is : ";
-    std::cout << mnmx.first - pointList.begin() << std::endl;
-   std::cout << "Min value: "<< pointList.at(mnmx.first - pointList.begin())<< "\n";
-
-   std::cout << "\nThe maximum value position obtained is : ";
-    std::cout << mnmx.second - pointList.begin() << std::endl;
-
-    std::cout << "Max value: "<< pointList.at(mnmx.second - pointList.begin())<< "\n";
-    std::cout << std::endl;
-
-
-
-    if(this->pointList.size()==0){
-        return;
-    }
-    double minX=0,maxX=0,minY=0,maxY = 0;
-    for(int i=0; i<pointList.size(); i++){
-        if(i==0){
-            minX = pointList[i].V(0);
-            maxX = pointList[i].V(0);
-                             
-            minY = pointList[i].V(1);
-            maxY = pointList[i].V(1);
-        }
-        else{
-            if(pointList[i].V(0) > maxX){
-            maxX = pointList[i].V(0);
-            }
-            if(pointList[i].V(0) < minX){
-                minX = pointList[i].V(0);
-            }
-            if(pointList[i].V(1) > maxY){
-                maxY = pointList[i].V(1);
-            }
-            if(pointList[i].V(1) <minY){
-                minY = pointList[i].V(1);
-            }
-        }
-    
-    }
-    
-    setmaxX(maxX);
-    setmaxY(maxY);
-    setminX(minX);
-    setminY(minY);
-    return;
+  }
+  std::vector<Point2D> output = {minPt, maxPt};
+  return output;
     
 }
 
@@ -221,41 +170,14 @@ Point2D DelMesh::getMeanPt(){
 
 
 Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
-    if(this->pointList.size()==0){
-        return Triangle(Point2D(0, 0,0),Point2D(0, 0,1),Point2D(0, 0,2));
-    }
-    Point2D meanPoint= this->getMeanPt();
     
     double DeltaX = MAX_XY.V(0)-MIN_XY.V(0);
     double DeltaY = MAX_XY.V(1)-MIN_XY.V(1);
-    double maxCircX  = maxX;
-    double minCircX = minX;
-    double maxCircY = maxY;
-    double minCircY = minY;
-    for(int i=0; i<this->pointList.size()-2; i++){
-        for(int j=i+1; j< this->pointList.size()-1; j++){
-            for(int k = j+1; k < this->pointList.size(); k++){
-                //std::cout<<"Point Combination: I: " << i << ": "<< pointList[i]<<"J: "<<j<<": "<<pointList[j]<< "K: "<<k<<": "<<pointList[k]<<"\n";
-                Triangle tri = Triangle(pointList[i],pointList[j],pointList[k]);
-                //std::cout<<"["<<i<<","<<j<<","<<k<<"]\n";
-                if (tri.circle.Box.XY_MAX.V(0) > maxCircX){maxCircX = tri.circle.Box.XY_MAX.V(0); }
-                if (tri.circle.Box.XY_MAX.V(1) > maxCircY){maxCircY = tri.circle.Box.XY_MAX.V(1); }
-                
-                if (tri.circle.Box.XY_MIN.V(0) < minCircX){minCircX = tri.circle.Box.XY_MIN.V(0); }
-                if (tri.circle.Box.XY_MIN.V(1) < minCircY){minCircY = tri.circle.Box.XY_MIN.V(1); }
+    double maxCircX  = MAX_XY.V(0);
+    double minCircX = MIN_XY.V(0);
+    double maxCircY = MAX_XY.V(1);
+    double minCircY = MIN_XY.V(1);
 
-            }
-
-        }
-
-
-    }
-    //std::cout<<maxCircX<<","<<maxCircY<<"||"<<minCircX<<","<<minCircY<<"\n";
-
-    // std::cout<<"maxCircX: "<<maxCircX<<"\n";
-    // std::cout<<"maxCircY: "<<maxCircY<<"\n";
-    // std::cout<<"minCircX: "<<minCircX<<"\n";
-    // std::cout<<"minCircY: "<<minCircY<<"\n";
     double C_supX = (maxCircX + minCircX) /2;
     double C_supY = (maxCircY + minCircY) /2;
 
@@ -263,8 +185,7 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     Point2D maxCIRCXY = Point2D(maxCircX,maxCircY,-1);
 
     double r_cc = C_supPoint.dist(maxCIRCXY);
-    double r_scc = 2*r_cc;
-
+    double r_scc = 2e10*r_cc;
 
     double A_y = C_supY + r_scc;
     
@@ -273,16 +194,12 @@ Triangle DelMesh::getSuperTriang(Point2D MAX_XY, Point2D MIN_XY){
     double B_x = C_supX + (3.0/2.0)*r_scc*tan(M_PI/6);
     double C_x = C_supX - (3.0/2.0)*r_scc*tan(M_PI/6);
 
-    // std::cout<<"B_X: "<<B_x<<"\n";
-    // std::cout<<"C_X: "<<C_x<<"\n";
-    // std::cout<<"Tan: "<<tan(M_PI/6);
     Point2D A = Point2D(C_supX, A_y,-1);
 
     Point2D B = Point2D(B_x, BC_y,-2);
     Point2D C = Point2D(C_x, BC_y,-3);
 
     Triangle output = Triangle(A, B, C);
-    //std::cout<<"========At SuperTriangReturn========\n";
     return output;
     
 }
@@ -291,10 +208,8 @@ void DelMesh::ExportConnecArray(std::string fileName, std::vector<Triangle> tria
     std::fstream outFile;
     outFile.open(fileName,std::ios::out);
 
-    std::vector<Triangle> cleanedTriangulation = cleanTriangulation(triangulation);
-    std::cout<<"Got here\n";
     if(outFile.is_open()){
-        for ( auto triangle : cleanedTriangulation){
+        for ( auto triangle : triangulation){
             std::cout << "Looking at triangle: " << triangle << "With bool val: " << triangle.HAS_SUPERTRIANGLE_POINT << "\n";
             outFile << triangle.a.idx+1 << "," << triangle.b.idx+1 << "," << triangle.c.idx+1 << ";\n";
         }
@@ -306,7 +221,6 @@ void DelMesh::ExportConnecArray(std::string fileName, std::vector<Triangle> tria
 
 void DelMesh::BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation){
 
-    std::vector<int> badTriangIndx;
     std::vector<Triangle> badTriangleList = {};
     std::vector<Edge> polygonEdgeList = {};
 
@@ -316,20 +230,12 @@ void DelMesh::BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation)
         //Remove from triangulationd
         //Store edges of triangle
             badTriangleList.push_back(Triangulation.at(j));
-            badTriangIndx.push_back(j);
         //Remove Bad Triangle From List
         }
 
-        std::cout<<"Got to Triangulation loop\n";
     }  
-        
-        
 
-    std::cout<<"got out of Triangulation loop\n";
-
-    std::cout << "Inserting point: " << point <<"\n";
     for(Triangle badTriang : badTriangleList){
-
         for (Edge e : badTriang.Edges){
             bool isUnique = true;
             for( Triangle badTriangInner : badTriangleList){
@@ -339,34 +245,22 @@ void DelMesh::BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation)
                             isUnique = false;
                         }
                     }
-
                 }
-
             }
             if(isUnique){
                 polygonEdgeList.push_back(e);
             }
-    
         }
-
-
     }
     // Remove bad Triangles from triangulation
-    std::cout<< "Len Triangulaton: " << Triangulation.size();
     Triangulation = removeBadTriang(badTriangleList,Triangulation);
-    std::cout<< "Len Triangulaton: " << Triangulation.size();
-
-    std::cout<<"Edges in Polygon List:\n";
-    for (Edge polyEdge : polygonEdgeList){
-        std::cout<< polyEdge<<"\n";
-    }
 
     for(int j=0; j<polygonEdgeList.size();j++){
-        std::cout<<"Building new Triangles\n";
+    //    std::cout<<"Building new Triangles\n";
         Triangle T = Triangle(point,polygonEdgeList[j].a,polygonEdgeList[j].b);
         Triangulation.push_back(T);
     }
-
+  
 }
 
 
@@ -374,8 +268,9 @@ std::vector<Triangle> DelMesh::BowyerWatson(std::vector<Point2D> pointList, Tria
     std::vector<Triangle> Triangulation = {SuperTriag}; 
     for(int i=0; i<pointList.size(); i++){
         DelMesh::BW_Insert_Pt(pointList.at(i),Triangulation);
-        std::cout<<"Triangulation.len: "<<Triangulation.size()<<"\n";
+//        std::cout<<"Triangulation.len: "<<Triangulation.size()<<"\n";
     }
-    return Triangulation;
+    
+    return cleanTriangulation(Triangulation);
 
 }

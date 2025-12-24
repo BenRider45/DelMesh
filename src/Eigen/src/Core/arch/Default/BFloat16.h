@@ -95,7 +95,6 @@ struct numeric_limits<Eigen::bfloat16> {
   static const bool has_infinity = true;
   static const bool has_quiet_NaN = true;
   static const bool has_signaling_NaN = true;
-  static const float_denorm_style has_denorm = std::denorm_absent;
   static const bool has_denorm_loss = false;
   static const std::float_round_style round_style = numeric_limits<float>::round_style;
   static const bool is_iec559 = false;

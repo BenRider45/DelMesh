@@ -214,7 +214,6 @@ struct numeric_limits<Eigen::half> {
   static const bool has_infinity = true;
   static const bool has_quiet_NaN = true;
   static const bool has_signaling_NaN = true;
-  static const float_denorm_style has_denorm = denorm_present;
   static const bool has_denorm_loss = false;
   static const std::float_round_style round_style = std::round_to_nearest;
   static const bool is_iec559 = false;

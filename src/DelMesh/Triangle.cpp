@@ -17,11 +17,8 @@ Circle Triangle::computeCircumcircle(){
     //This loop ensures we will never choose a side with a slope of 0.
     
     for(int i=0; i<3; i++){
-        //std::cout << "this->Edges.at(i).slope:" << this->Edges.at(i).slope << "\n";
-       // std::cout << "this->Edges.at(i).SLOPE_ZERO: " << this->Edges.at(i).SLOPE_ZERO << "\n"; 
         if(this->Edges.at(i).SLOPE_ZERO){
             
-            ////std::cout <<"index i: "<< i << "\n";
             A_idx = i-1;
             B_idx = i+1;
             if(A_idx == -1){A_idx = 2; }
@@ -31,15 +28,9 @@ Circle Triangle::computeCircumcircle(){
         }
         
     }
-    ////std::cout << "A_idx: "<< A_idx << "\n";
-    ////std::cout << "B_idx: "<< B_idx << "\n";
-
-    ////std::cout << "============\n";
-
 
 
     Edge A = this->Edges.at(A_idx);
-    //std::cout << "Edge at A_idx: " << A << '\n'; 
 
     double A_perpM;
     if(A.SLOPE_INF){
@@ -47,18 +38,15 @@ Circle Triangle::computeCircumcircle(){
     }else{
         A_perpM = -1/A.slope;
     }
-
-    
     Edge B = this->Edges.at(B_idx);
-    //std::cout << "Edge at B_idx: " << B << '\n'; 
 
     double B_perpM;
+    
     if(B.SLOPE_INF){
         B_perpM = 0;
     }else{
         B_perpM = -1/B.slope;
     }
-    
     
     double denom = B_perpM - A_perpM;
     double X_Num = (B_perpM*B.midPt.V(0)) - (A_perpM*A.midPt.V(0)) + (A.midPt.V(1) - B.midPt.V(1));
@@ -67,6 +55,7 @@ Circle Triangle::computeCircumcircle(){
         
     double CircCenter_X =  X_Num / denom;
     double CircCenter_Y = (Y_Num /denom) + Y_Res;
+   
     Point2D CirclePoint = Point2D(CircCenter_X,CircCenter_Y,-1);
     double CircleRadius = sqrt(pow((CircCenter_X - A.a.V(0)),2)+ pow((CircCenter_Y - A.a.V(1)),2));
     Circle output = Circle(CirclePoint,CircleRadius);
