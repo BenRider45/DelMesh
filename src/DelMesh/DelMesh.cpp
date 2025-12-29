@@ -14,7 +14,6 @@
 #include <random>
 #include <regex>
 #include <string>
-#include <string_view>
 
 DelMesh::DelMesh() {
   this->connecArray = std::vector<Triangle>();

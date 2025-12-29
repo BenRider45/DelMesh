@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10...3.50)
-project(DelMesh VERSION 0.1)
+project(DelMesh VERSION 0.2)
 
 
 set(CMAKE_CXX_STANDARD 23)
