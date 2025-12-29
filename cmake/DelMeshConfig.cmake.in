@@ -11,4 +11,5 @@ else()
     find_dependency(Eigen3 REQUIRED)
 endif()
 
+find_dependancy(gflags)
 check_required_components(DelMesh)

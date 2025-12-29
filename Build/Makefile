@@ -269,6 +269,30 @@ gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+src/DelMesh/Command.o: src/DelMesh/Command.cpp.o
+.PHONY : src/DelMesh/Command.o
+
+# target to build an object file
+src/DelMesh/Command.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Command.cpp.o
+.PHONY : src/DelMesh/Command.cpp.o
+
+src/DelMesh/Command.i: src/DelMesh/Command.cpp.i
+.PHONY : src/DelMesh/Command.i
+
+# target to preprocess a source file
+src/DelMesh/Command.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Command.cpp.i
+.PHONY : src/DelMesh/Command.cpp.i
+
+src/DelMesh/Command.s: src/DelMesh/Command.cpp.s
+.PHONY : src/DelMesh/Command.s
+
+# target to generate assembly for a file
+src/DelMesh/Command.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DelMesh.dir/build.make CMakeFiles/DelMesh.dir/src/DelMesh/Command.cpp.s
+.PHONY : src/DelMesh/Command.cpp.s
+
 src/DelMesh/DelMesh.o: src/DelMesh/DelMesh.cpp.o
 .PHONY : src/DelMesh/DelMesh.o
 
@@ -458,6 +482,9 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... unit_tests"
+	@echo "... src/DelMesh/Command.o"
+	@echo "... src/DelMesh/Command.i"
+	@echo "... src/DelMesh/Command.s"
 	@echo "... src/DelMesh/DelMesh.o"
 	@echo "... src/DelMesh/DelMesh.i"
 	@echo "... src/DelMesh/DelMesh.s"

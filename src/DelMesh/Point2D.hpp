@@ -8,7 +8,7 @@
 #ifndef Point2D_hpp
 #define Point2D_hpp
 
-#include "Eigen/Dense"
+#include "../Eigen/Dense"
 #include "UTIL.hpp"
 #include <cmath>
 #include <iostream>
