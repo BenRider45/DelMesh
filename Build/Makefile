@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /Users/benrider/Documents/Development/DelMesh
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/benrider/Documents/Development/DelMesh/build
+CMAKE_BINARY_DIR = /Users/benrider/Documents/Development/DelMesh/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,16 +142,16 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/build/CMakeFiles /Users/benrider/Documents/Development/DelMesh/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles /Users/benrider/Documents/Development/DelMesh/Build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
 .PHONY : all
 
 # The main codegen target
 codegen: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/build/CMakeFiles /Users/benrider/Documents/Development/DelMesh/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles /Users/benrider/Documents/Development/DelMesh/Build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 codegen
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benrider/Documents/Development/DelMesh/Build/CMakeFiles 0
 .PHONY : codegen
 
 # The main clean target

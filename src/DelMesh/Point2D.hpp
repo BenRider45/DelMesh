@@ -8,75 +8,73 @@
 #ifndef Point2D_hpp
 #define Point2D_hpp
 
-#include <stdio.h>
-#include <iostream>
 #include "Eigen/Dense"
-#include <cmath>
 #include "UTIL.hpp"
+#include <cmath>
+#include <iostream>
+#include <stdio.h>
 class Point2D {
-     
-    
+
 public:
+  Eigen::Vector2d V; // Point Vector
 
-    Eigen::Vector2d V;//Point Vector
-    
-    bool inTriangle;
-   
-    double mag;
+  bool inTriangle;
 
-    int idx; //Index of point in respective pointList
-    //1
-    
-//    If the slope is zero, you know the 𝑦
-//     coordinate of the center because two of your points have the same 𝑥
-//     coordinate and the bisector is the line halfway between them.
-//     Similarly if the slope is infinite, you know the 𝑥
-//     coordinate of the center. You can use this 𝑥
-//     or 𝑦 in the line bisecting the segment between the third point
-//     and one of the two you have used.
-//     in the line bisecting the segment between the third point
-//     and one of the two you have used.
-    
-    Point2D(Eigen::Vector2d init_coordinates,int idx) : idx(idx)  {
+  double mag;
 
+  int idx; // Index of point in respective pointList
+  // 1
 
-        init_coordinates(0) = init_coordinates(0);
-        init_coordinates(1) = init_coordinates(1);
+  //    If the slope is zero, you know the 𝑦
+  //     coordinate of the center because two of your points have the same 𝑥
+  //     coordinate and the bisector is the line halfway between them.
+  //     Similarly if the slope is infinite, you know the 𝑥
+  //     coordinate of the center. You can use this 𝑥
+  //     or 𝑦 in the line bisecting the segment between the third point
+  //     and one of the two you have used.
+  //     in the line bisecting the segment between the third point
+  //     and one of the two you have used.
 
-        mag = pow(V(0),2) + pow(V(1),2);
-        inTriangle = false;
-    };
+  Point2D(Eigen::Vector2d init_coordinates, int idx) : idx(idx) {
 
-    Point2D()= default;
-    Point2D(double x, double y, int idx) : inTriangle(false), idx(idx){
-        //Processing coords
-        V = Eigen::Vector2d(x,y);
+    init_coordinates(0) = init_coordinates(0);
+    init_coordinates(1) = init_coordinates(1);
 
-        mag = pow(V(0),2) + pow(V(1),2);
-        inTriangle = false;
-    };
+    mag = pow(V(0), 2) + pow(V(1), 2);
+    inTriangle = false;
+  };
 
-    Point2D(Eigen::Vector2d coords,bool newInTriangle,int idx): idx(idx) {
-        
-        V = coords; 
-        V(0) = V(0);
-        V(1) = V(1);
+  Point2D() = default;
+  Point2D(double x, double y, int idx) : inTriangle(false), idx(idx) {
+    // Processing coords
+    V = Eigen::Vector2d(x, y);
 
-        inTriangle = newInTriangle; 
-        mag = pow(V(0),2) + pow(V(1),2);
-    }
+    mag = pow(V(0), 2) + pow(V(1), 2);
+    inTriangle = false;
+  };
 
-   bool operator<(const Point2D& other) const {
-            return V.norm() < other.V.norm();
-        }
+  Point2D(Eigen::Vector2d coords, bool newInTriangle, int idx) : idx(idx) {
 
-    friend std::ostream& operator<<(std::ostream& os, const Point2D& pt);
+    V = coords;
+    V(0) = V(0);
+    V(1) = V(1);
 
-    
-    bool operator==(const Point2D& other) const {return UTIL::compDouble(this->V(0), other.V(0)) && UTIL::compDouble(this->V(1), other.V(1));}
-    
-    double dist(Point2D other);
+    inTriangle = newInTriangle;
+    mag = pow(V(0), 2) + pow(V(1), 2);
+  }
 
+  bool operator<(const Point2D &other) const {
+    return V.norm() < other.V.norm();
+  }
+
+  friend std::ostream &operator<<(std::ostream &os, const Point2D &pt);
+
+  bool operator==(const Point2D &other) const {
+    return UTIL::compDouble(this->V(0), other.V(0)) &&
+           UTIL::compDouble(this->V(1), other.V(1));
+  }
+
+  double dist(Point2D other);
 };
 
 #endif /* Point2D_hpp */

@@ -57,6 +57,12 @@ namespace{
     }
 
 }//namespace
+
+bool DelMesh::Initialize(std::string op){
+  //TODO make input enum DelMesh::OPERATIONS, set execution target to that function
+   
+}
+
 std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY, double maxY, int n,int seed,std::string fileName){
     
     
@@ -67,7 +73,7 @@ std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY, do
         std::cout<<"File is Open\n";
         if (minX == minY && maxX == maxY){ //Checking if we have a symmetrical range for X and Y, this allowing us to use only one random distribution
             std::uniform_real_distribution<double> dist(minX,maxX);
-            std::mt19937 rng;
+            std::mt rng;
             
             rng.seed(seed);
             

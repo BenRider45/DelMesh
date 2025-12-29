@@ -52,6 +52,8 @@ target_compile_options(DelMesh PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:/W4>
 )
 
+find_package(gflags REQUIRED)
+target_link_libraries(DelMesh PUBLIC gflags)
 
 set_target_properties(DelMesh PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
