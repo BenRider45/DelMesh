@@ -10,9 +10,7 @@
 #include "Point2D.hpp"
 #include <fstream>
 #include <iostream>
-#include <map>
 #include <random>
-#include <regex>
 #include <string>
 
 DelMesh::DelMesh() {
@@ -20,7 +18,6 @@ DelMesh::DelMesh() {
   this->pointList = std::vector<Point2D>();
 }
 
-const constexpr char kTriangulate[] = "TRIANGULATE";
 namespace {
 
 std::string str_toupper(std::string s) {
@@ -29,9 +26,6 @@ std::string str_toupper(std::string s) {
   );
   return s;
 }
-
-std::map<std::string, DelMesh::OPERATIONS> operation_string_map{
-    {kTriangulate, DelMesh::OPERATIONS::TRIANGULATE}};
 
 std::vector<Triangle> removeBadTriang(std::vector<Triangle> &BadTraings,
                                       std::vector<Triangle> &Triangulation) {
@@ -69,16 +63,6 @@ std::vector<Triangle> cleanTriangulation(std::vector<Triangle> &Triangulation) {
 
 } // namespace
 
-bool DelMesh::Initialize(OPERATIONS op) {
-  // TODO make input enum DelMesh::OPERATIONS, set execution target to that
-  //
-  // function
-}
-
-bool DelMesh::Validate(std::string command) {
-  std::cout << "Validation zone bitchhhh\n" << "command" << command << "\n";
-  std::cout << operation_string_map.contains(str_toupper(command)) << "\n";
-}
 std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY,
                                        double maxY, int n, int seed,
                                        std::string fileName) {
@@ -89,8 +73,9 @@ std::string DelMesh::generateRandPtLst(double minX, double maxX, double minY,
   if (outFile.is_open()) {
     std::cout << "File is Open\n";
     if (minX == minY &&
-        maxX == maxY) { // Checking if we have a symmetrical range for X and Y,
-                        // this allowing us to use only one random distribution
+        maxX ==
+            maxY) { // Checking if we have a symmetrical range for X and Y,make
+                    // this allowing us to use only one random distribution
       std::uniform_real_distribution<double> dist(minX, maxX);
       std::mt19937 rng;
 

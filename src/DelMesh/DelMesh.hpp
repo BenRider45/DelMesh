@@ -25,11 +25,10 @@ public:
   DelMesh &operator=(const DelMesh &) = default;
   DelMesh &operator=(DelMesh &&) = default;
 
-  bool Validate(std::string command);
+  bool Validate(std::string command, int argCount);
   std::vector<Triangle> connecArray; // connectivity array
   std::vector<Point2D> pointList;    // Point list
 
-  enum class OPERATIONS { TRIANGULATE };
   std::vector<Triangle>
   BowyerWatson(std::vector<Point2D> pointList,
                Triangle SuperTriang); // calculation of triangluation mesh
@@ -46,20 +45,19 @@ public:
       std::string
           fileName); // Generate a n-length list of random 2D points under the
                      // given bounds for x and y, stores in textfile. Option to
-                     // inclufe seed for reproducibility
-
+                     // include seed for reproducibility
+  bool Execute();
   Point2D getMeanPt();
-
+  bool Triangulate();
   std::vector<Point2D> radialSort(std::vector<Point2D> pntLst);
 
   // Return vector containing 2 points s.t output= {(Minx,Miny),(Maxx,Maxy)}
   std::vector<Point2D> findMaxMin(std::vector<Point2D> pointLst);
 
-  bool Initialize(OPERATIONS op);
+  bool Initialize(std::string command);
 
 private:
   Triangle getSuperTriang(Point2D MAX_XY, Point2D MIN_XY);
   void BW_Insert_Pt(Point2D &point, std::vector<Triangle> &Triangulation);
 };
-
 #endif /* DelMesh_hpp */

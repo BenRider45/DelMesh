@@ -33,10 +33,9 @@ int main(int argc, char *argv[]) {
   std::cout << "after parse\n";
   std::string command = argv[1];
   std::cout << "command:" << command << "\n";
-  DelMesh Mesh = DelMesh();
+  DelMesh Mesh(argc, argv);
   Point2D MAX_XY = Point2D(10, 10, -1);
   Point2D MIN_XY = Point2D(-10, -10, -1);
-  Mesh.Validate(std::move(command));
   std::string pointFPath =
       Mesh.generateRandPtLst(MIN_XY.V(0), MAX_XY.V(0), MIN_XY.V(1), MAX_XY.V(1),
                              300, 10, "../PointFiles/TestPointFil4e.txt");
